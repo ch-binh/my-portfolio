@@ -1,0 +1,257 @@
+---
+interface Props {
+  title?: string;
+  frontmatter?: {
+    title: string;
+    date?: string;
+  };
+}
+
+const { title, frontmatter } = Astro.props;
+const pageTitle = frontmatter?.title || title || "Saki - Portfolio";
+const publishDate = frontmatter?.date;
+
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style is:global>
+      :root {
+        --bg-color: #0b0f19;
+        --text-color: #e2e8f0;
+        --text-muted: #94a3b8;
+        --accent-color: #38bdf8;
+        --accent-hover: #7dd3fc;
+        --border-color: #1e293b;
+        --code-bg: #111827;
+        --code-inline-bg: #1e293b;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.625;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding: 2rem 1.5rem;
+      }
+
+      /* Premium Minimalist Container */
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding-bottom: 5rem;
+      }
+
+      /* Navigation Header */
+      header {
+        margin-bottom: 3.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px dashed var(--border-color);
+      }
+
+      nav {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      nav a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: color 0.2s ease, border-color 0.2s ease;
+        padding-bottom: 0.25rem;
+        border-bottom: 2px solid transparent;
+      }
+
+      nav a:hover, nav a.active {
+        color: var(--text-color);
+      }
+
+      nav a.active {
+        border-color: var(--accent-color);
+      }
+
+      /* Premium Markdown Styling */
+      h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.025em;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.4rem;
+        margin-top: 2.5rem;
+        letter-spacing: -0.015em;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        margin-top: 2rem;
+      }
+
+      p {
+        margin-bottom: 1.25rem;
+        color: var(--text-color);
+      }
+
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+
+      a:hover {
+        color: var(--accent-hover);
+        text-decoration: underline;
+      }
+
+      ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      li::marker {
+        color: var(--accent-color);
+      }
+
+      /* Monospace & Code styling */
+      code {
+        font-family: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono', monospace;
+        font-size: 0.875em;
+        background-color: var(--code-inline-bg);
+        color: #f1f5f9;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+      }
+
+      pre {
+        background-color: var(--code-bg) !important;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.25rem;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        font-size: 0.9em;
+        color: inherit;
+      }
+
+      /* Date label */
+      .post-meta {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-top: -1rem;
+        margin-bottom: 2rem;
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+
+      .back-link:hover {
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      /* Minimal Footer */
+      footer {
+        margin-top: 5rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <a href={baseUrl} class="nav-home">Home</a>
+          <a href={`${baseUrl}projects/`} class="nav-projects">Projects</a>
+          <a href={`${baseUrl}blog/`} class="nav-blog">Blog</a>
+        </nav>
+      </header>
+
+      <main>
+        {publishDate && (
+          <div class="post-meta">
+            <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          </div>
+        )}
+        <slot />
+      </main>
+
+      <footer>
+        <p>&copy; {new Date().getFullYear()} Saki. Built with Astro & Markdown Aesthetics.</p>
+      </footer>
+    </div>
+
+    <!-- Active Class Script -->
+    <script define:vars={{ baseUrl }}>
+      const currentPath = window.location.pathname;
+      document.querySelectorAll('nav a').forEach(link => {
+        const href = link.getAttribute('href');
+        // Handle active states beautifully
+        if (href === baseUrl) {
+          if (currentPath === baseUrl || currentPath === baseUrl + 'index.html' || currentPath === baseUrl + 'index') {
+            link.classList.add('active');
+          }
+        } else if (currentPath.startsWith(href)) {
+          link.classList.add('active');
+        }
+      });
+    </script>
+  </body>
+</html>

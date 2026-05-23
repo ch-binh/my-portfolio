@@ -1,6 +1,7 @@
 ---
 title: "PDM vs PCM in Embedded Audio"
 date: "2026-05-23"
+layout: ../../layouts/Layout.astro
 ---
 
 # PDM vs PCM in Embedded Audio

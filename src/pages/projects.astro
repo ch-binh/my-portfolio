@@ -1,39 +1,34 @@
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Projects</title>
-  </head>
-  <body>
-    <main>
-      <h1>Projects</h1>
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-      <section>
-        <h2>PDM Microphone to PCM Audio on Nordic nRF</h2>
-        <p>
-          Captured microphone data using Nordic PDM peripheral and handled
-          PCM audio buffers for further processing.
-        </p>
+<Layout title="Projects - Saki Portfolio">
+  <h1>Projects</h1>
+  <p>Here are some of the key hardware and firmware projects I've worked on recently:</p>
 
-        <ul>
-          <li>Platform: Nordic nRF</li>
-          <li>Topics: PDM, PCM, DMA-like buffering, audio sampling</li>
-          <li>Language: C</li>
-        </ul>
-      </section>
+  <section>
+    <h2>PDM Microphone to PCM Audio on Nordic nRF</h2>
+    <p>
+      Captured high-fidelity digital microphone data using the Nordic nRF52 PDM (Pulse Density Modulation) peripheral and converted/filtered it into ready-to-use PCM audio buffers via DMA-based transfer mechanisms.
+    </p>
 
-      <section>
-        <h2>STM32 SDMMC + DMA Debugging</h2>
-        <p>
-          Investigated interrupt priority, DMA transfer behavior, and RTOS
-          preemption issues on STM32.
-        </p>
+    <ul>
+      <li><strong>Platform:</strong> Nordic nRF52 series</li>
+      <li><strong>Topics:</strong> PDM, PCM, DMA, double buffering, audio decimation</li>
+      <li><strong>Language:</strong> C</li>
+    </ul>
+  </section>
 
-        <ul>
-          <li>Platform: STM32L4</li>
-          <li>Topics: SDMMC, DMA, NVIC, RTOS</li>
-          <li>Language: C</li>
-        </ul>
-      </section>
-    </main>
-  </body>
-</html>
+  <section>
+    <h2>STM32 SDMMC + DMA Debugging</h2>
+    <p>
+      Diagnosed and resolved critical race conditions, interrupt preemption priorities, and memory coherence issues on STM32 microcontroller DMA transfers to SD cards via SDMMC protocol.
+    </p>
+
+    <ul>
+      <li><strong>Platform:</strong> STM32L4 series</li>
+      <li><strong>Topics:</strong> SDMMC, DMA, NVIC, RTOS Preemption, Cache Coherence</li>
+      <li><strong>Language:</strong> C</li>
+    </ul>
+  </section>
+</Layout>

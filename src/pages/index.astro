@@ -1,26 +1,26 @@
 ---
+import Layout from '../layouts/Layout.astro';
 const name = "Saki";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{name} - Embedded Firmware Portfolio</title>
-  </head>
-  <body>
-    <main>
-      <h1>Hi, I'm {name}</h1>
+<Layout title="Home - Saki Portfolio">
+  <h1>Hi, I'm {name}</h1>
 
-      <p>
-        Embedded Firmware Engineer interested in RTOS, MCU peripherals,
-        DMA, audio processing, and low-level debugging.
-      </p>
+  <p>
+    I am an <strong>Embedded Firmware Engineer</strong> interested in RTOS, MCU peripherals,
+    DMA, digital audio processing, and low-level debugging.
+  </p>
 
-      <nav>
-        <a href="/projects/">Projects</a>
-        <a href="/blog/">Blog</a>
-        <a href="mailto:your-email@example.com">Contact</a>
-      </nav>
-    </main>
-  </body>
-</html>
+  <p>
+    This space serves as my portfolio, documenting my technical discoveries and projects in embedded software.
+  </p>
+
+  <h2 id="contact">Get in Touch</h2>
+  <p>
+    Feel free to reach out to me via email if you want to collaborate on firmware development, RTOS debugging, or talk about audio hardware.
+  </p>
+  <ul>
+    <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+    <li>GitHub: <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer">github.com/ch-binh</a></li>
+  </ul>
+</Layout>
