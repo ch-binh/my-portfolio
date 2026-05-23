@@ -6,6 +6,8 @@ npm create astro@latest -- --template minimal
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
+https://ch-binh.github.io/my-portfolio/
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
