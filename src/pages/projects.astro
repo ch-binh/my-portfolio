@@ -1,34 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
-<Layout title="Projects - Saki Portfolio">
+<Layout title="Projects - Binh Pham Portfolio">
   <h1>Projects</h1>
-  <p>Here are some of the key hardware and firmware projects I've worked on recently:</p>
+  <p>A compiled portfolio of my graduation research, hardware engineering, and low-level firmware projects. Click on any project to explore its full technical documentation, schematics, and C/C++ code implementations:</p>
 
-  <section>
-    <h2>PDM Microphone to PCM Audio on Nordic nRF</h2>
+  <section style="margin-bottom: 3rem;">
+    <h2>🎓 Graduation Thesis: Design & Implementation of a High-Precision IoT Edge Gateway</h2>
     <p>
-      Captured high-fidelity digital microphone data using the Nordic nRF52 PDM (Pulse Density Modulation) peripheral and converted/filtered it into ready-to-use PCM audio buffers via DMA-based transfer mechanisms.
+      Developed an intelligent, low-power IoT Edge Gateway running **Embedded Linux (Yocto)** to aggregate, process, and securely stream sensor data from low-power nodes to a cloud backend via concurrent Go services.
     </p>
-
-    <ul>
-      <li><strong>Platform:</strong> Nordic nRF52 series</li>
-      <li><strong>Topics:</strong> PDM, PCM, DMA, double buffering, audio decimation</li>
-      <li><strong>Language:</strong> C</li>
-    </ul>
+    <p>
+      <a href={`${baseUrl}projects/graduation-thesis/`} style="font-weight: 600;">Read Full Thesis Details & Architecture →</a>
+    </p>
   </section>
 
-  <section>
-    <h2>STM32 SDMMC + DMA Debugging</h2>
+  <section style="margin-bottom: 3rem;">
+    <h2>⚖️ High-Precision Mass Measurement System (Loadcell & HX711)</h2>
     <p>
-      Diagnosed and resolved critical race conditions, interrupt preemption priorities, and memory coherence issues on STM32 microcontroller DMA transfers to SD cards via SDMMC protocol.
+      Designed a noise-resilient electronic weight measurement node utilizing a 24-bit HX711 ADC and loadcell sensors, featuring real-time C-based Kalman and Moving Average filters to eliminate physical vibration noise.
     </p>
+    <p>
+      <a href={`${baseUrl}projects/loadcell-weight-system/`} style="font-weight: 600;">Read Full Project Details & C Code →</a>
+    </p>
+  </section>
 
-    <ul>
-      <li><strong>Platform:</strong> STM32L4 series</li>
-      <li><strong>Topics:</strong> SDMMC, DMA, NVIC, RTOS Preemption, Cache Coherence</li>
-      <li><strong>Language:</strong> C</li>
-    </ul>
+  <section style="margin-bottom: 3rem;">
+    <h2>🎙️ PDM Microphone to PCM Audio on Nordic nRF52</h2>
+    <p>
+      Captured high-fidelity digital microphone data using the Nordic nRF52 PDM peripheral and converted/filtered it into ready-to-use PCM audio buffers via low-latency EasyDMA double-buffering.
+    </p>
+    <p>
+      <a href={`${baseUrl}projects/pdm-microphone-pcm-audio/`} style="font-weight: 600;">Read Full Project Details & DMA Logic →</a>
+    </p>
+  </section>
+
+  <section style="margin-bottom: 3rem;">
+    <h2>💾 STM32 SDMMC + DMA Debugging</h2>
+    <p>
+      Diagnosed and resolved critical race conditions, interrupt preemption priorities, and D-Cache memory coherence issues on STM32 microcontroller DMA transfers to SD cards via SDMMC protocol.
+    </p>
+    <p>
+      <a href={`${baseUrl}projects/stm32-sdmmc-dma-debugging/`} style="font-weight: 600;">Read Full Debugging Journal & NVIC Details →</a>
+    </p>
   </section>
 </Layout>

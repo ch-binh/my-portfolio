@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
+---
+
+<Layout title="Contact - Binh Pham Portfolio">
+  <div class="contact-container">
+    <h1>Contact Me</h1>
+    <p class="contact-intro">
+      If you are looking for a dedicated **Embedded Systems & Firmware Engineer** who lives and breathes high-stability device software, low-level MCU driver design, and Embedded Linux architectures, let's connect!
+    </p>
+    <p class="contact-intro">
+      I am always open to discussing new engineering opportunities, collaborating on firmware/hardware projects, or troubleshooting complex technical issues.
+    </p>
+
+    <!-- Professional Contact Methods -->
+    <div class="contact-methods">
+      <!-- Highlighted Resume Download Card -->
+      <div class="method-card resume-highlight">
+        <div class="method-icon highlight-icon">📄</div>
+        <div class="method-details">
+          <h3>Curriculum Vitae (PDF)</h3>
+          <p>Get a print-ready copy of my latest professional resume for offline reading.</p>
+          <a href={`${baseUrl}Binh_Pham_Embedded_Systems_CV.pdf`} download class="method-link download-btn">Download CV (PDF) ↓</a>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon">✉️</div>
+        <div class="method-details">
+          <h3>Email</h3>
+          <p>Direct communication for job opportunities & technical collaboration.</p>
+          <a href="mailto:pcbinh.3005@gmail.com" class="method-link">pcbinh.3005@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon">💼</div>
+        <div class="method-details">
+          <h3>LinkedIn</h3>
+          <p>Connect with me professionally, view posts, and career milestones.</p>
+          <a href="https://www.linkedin.com/in/pham-chau-binh/" target="_blank" rel="noopener noreferrer" class="method-link">linkedin.com/in/pham-chau-binh</a>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon">💻</div>
+        <div class="method-details">
+          <h3>GitHub</h3>
+          <p>Explore my open-source repositories, driver libraries, and test code.</p>
+          <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer" class="method-link">github.com/ch-binh</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-container {
+    margin-top: 1.5rem;
+  }
+
+  .contact-intro {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Contact Cards Styling */
+  .contact-methods {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .method-card {
+    background-color: #111827;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: all 0.3s var(--ease-expo);
+  }
+
+  .method-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 25px -12px rgba(56, 189, 248, 0.15);
+  }
+
+  .method-icon {
+    font-size: 2rem;
+    background-color: #1e293b;
+    border-radius: 8px;
+    padding: 0.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+
+  .method-card:hover .method-icon {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+  }
+
+  .method-details h3 {
+    margin-top: 0;
+    margin-bottom: 0.35rem;
+    font-size: 1.15rem;
+    color: #ffffff;
+  }
+
+  .method-details p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .method-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s var(--ease-expo);
+  }
+
+  .method-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  /* Resume Highlight Styles */
+  .resume-highlight {
+    border-color: rgba(56, 189, 248, 0.3);
+    background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+  }
+
+  .resume-highlight:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.25);
+  }
+
+  .highlight-icon {
+    background-color: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
+    color: var(--accent-color);
+  }
+
+  .download-btn {
+    background-color: var(--accent-color);
+    color: #0b0f19 !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    transition: all 0.2s var(--ease-expo);
+    display: inline-block;
+  }
+
+  .download-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+    text-decoration: none !important;
+  }
+</style>

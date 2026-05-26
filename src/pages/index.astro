@@ -1,26 +1,280 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const name = "Saki";
+const name = "Binh Pham";
+const nickname = "Saki";
+
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
-<Layout title="Home - Saki Portfolio">
-  <h1>Hi, I'm {name}</h1>
+<Layout title="Binh Pham - Embedded Systems & Firmware Consultant">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1 class="greeting">Hi, I'm <span class="name-gradient">{name}</span></h1>
+    <p class="role-title">Embedded Firmware Consultant & Systems Engineer</p>
+    <p class="bio-intro">
+      I design robust, high-stability **Embedded Firmware (C/C++)** for microcontrollers (Cortex-M) and develop system software on **Embedded Linux**. 
+    </p>
+    <p class="bio-intro" style="margin-top: 0.5rem; font-weight: 500; color: var(--accent-color);">
+      ⚡ Available for freelance contracts, custom driver development, and hardware-to-firmware integration.
+    </p>
+  </div>
 
-  <p>
-    I am an <strong>Embedded Firmware Engineer</strong> interested in RTOS, MCU peripherals,
-    DMA, digital audio processing, and low-level debugging.
-  </p>
+  <!-- Freelance Services -->
+  <div class="section-block">
+    <h2>💼 How I Can Help Your Product</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>🔌 Custom Driver Development</h3>
+        <p>Interfacing specialized sensors, displays, or storage devices via SPI, I2C, UART, SDMMC, and custom register-level configurations.</p>
+      </div>
+      <div class="service-card">
+        <h3>⚙️ RTOS & Multi-threaded Architecture</h3>
+        <p>Designing stable, low-latency firmware architectures using FreeRTOS or Zephyr to ensure thread safety and avoid race conditions.</p>
+      </div>
+      <div class="service-card">
+        <h3>🎙️ Audio & Sensor Signal Processing</h3>
+        <p>High-precision digital audio capturing (PDM/I2S) and sensor filtering (Kalman, SMA) to clean up raw measurement data.</p>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    This space serves as my portfolio, documenting my technical discoveries and projects in embedded software.
-  </p>
+  <!-- Tech Stack Grid (Less Text, Highly Visual) -->
+  <div class="section-block">
+    <h2>🛠️ Core Stack</h2>
+    <div class="badge-grid">
+      <span class="badge">C / C++</span>
+      <span class="badge">Golang</span>
+      <span class="badge">FreeRTOS</span>
+      <span class="badge">Zephyr RTOS</span>
+      <span class="badge">Embedded Linux</span>
+      <span class="badge">Yocto Project</span>
+      <span class="badge">DMA & Peripherals</span>
+      <span class="badge">TCP/IP & BLE</span>
+      <span class="badge">GDB & J-Link</span>
+      <span class="badge">Saleae Logic</span>
+    </div>
+  </div>
 
-  <h2 id="contact">Get in Touch</h2>
-  <p>
-    Feel free to reach out to me via email if you want to collaborate on firmware development, RTOS debugging, or talk about audio hardware.
-  </p>
-  <ul>
-    <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
-    <li>GitHub: <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer">github.com/ch-binh</a></li>
-  </ul>
+  <!-- Quick Nav (CTA) -->
+  <div class="section-block cta-block">
+    <h2>📂 Explore My Work</h2>
+    <div class="cta-grid">
+      <a href={`${baseUrl}projects/`} class="cta-card">
+        <h3>Projects →</h3>
+        <p>Graduation thesis, HX711 Loadcell, nRF52 PDM Audio, and STM32 DMA debugging journals.</p>
+      </a>
+      <a href={`${baseUrl}blog/`} class="cta-card">
+        <h3>Blog Logs →</h3>
+        <p>Technical diaries on PDM-to-PCM conversion and digital Kalman noise filtering in C.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Warm Get in Touch -->
+  <div class="section-block contact-block">
+    <h2>✉️ Let's Connect</h2>
+    <p>Always open to discuss firmware craftsmanship, RTOS context-switching, or Embedded Linux systems.</p>
+    <div class="contact-links">
+      <a href="mailto:pcbinh.3005@gmail.com" class="contact-button">Email Me</a>
+      <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer" class="contact-button">GitHub</a>
+      <a href="https://www.linkedin.com/in/pham-chau-binh/" target="_blank" rel="noopener noreferrer" class="contact-button">LinkedIn</a>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  /* Custom Hero Styles */
+  .hero-section {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .greeting {
+    font-size: 2.75rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+  }
+
+  .name-gradient {
+    color: var(--accent-color);
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .role-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+
+  .bio-intro {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  .section-block {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-block h2 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .service-card {
+    background-color: #111827;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s var(--ease-expo);
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 25px -12px rgba(56, 189, 248, 0.15);
+  }
+
+  .service-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    color: #ffffff;
+  }
+
+  .service-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Badge Grid (Minimalist capsules) */
+  .badge-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .badge {
+    background-color: #111827;
+    color: #f1f5f9;
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s var(--ease-expo);
+  }
+
+  .badge:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -4px rgba(56, 189, 248, 0.2);
+  }
+
+  /* CTA Block (Quick navigation cards) */
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 600px) {
+    .cta-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cta-card {
+    background-color: #111827;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s var(--ease-expo);
+    display: block;
+    text-decoration: none;
+  }
+
+  .cta-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 25px -12px rgba(56, 189, 248, 0.15);
+  }
+
+  .cta-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    color: #ffffff;
+    transition: color 0.25s var(--ease-expo);
+  }
+
+  .cta-card:hover h3 {
+    color: var(--accent-color);
+  }
+
+  .cta-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Contact Block */
+  .contact-block p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .contact-button {
+    background-color: #111827;
+    color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s var(--ease-expo);
+    text-decoration: none;
+  }
+
+  .contact-button:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #0b0f19;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px rgba(56, 189, 248, 0.3);
+  }
+</style>
