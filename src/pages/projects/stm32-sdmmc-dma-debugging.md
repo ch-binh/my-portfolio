@@ -54,7 +54,8 @@ void write_buffer_to_sd(uint32_t* buffer, uint32_t block_address, uint32_t numbe
 
 ---
 
-## 🔍 Results & Achievements
-- **Bulletproof Stability**: Successfully ran continuous write testing for **72+ hours** with **0% data corruption** and **0 HardFaults**.
-- **Performance Increase**: Achieved sustained writing speeds of over **12MB/s** utilizing 4-bit wide SDMMC bus configurations.
-- **Improved Security**: Designed a failsafe data logging state machine that gracefully closes/syncs file descriptors in case of sudden power loss.
+## 🔍 Debugging Outcomes & Technical Gains
+- **Root Cause Resolution**: Eliminated kernel stack corruption and random context-switch HardFaults by aligning NVIC preemption priorities relative to the FreeRTOS syscall threshold.
+- **Data Coherence**: Resolved buffer corruption by inserting cache-flushing APIs (`SCB_CleanDCache_by_Addr`) to synchronize physical SRAM with the Cortex-M7 D-Cache before DMA start.
+- **Bus Optimization**: Leveraged a 4-bit wide SDMMC hardware bus configuration and DMA multi-block modes to maintain reliable sensor data logging.
+- **Power Failsafe**: Implemented a software state machine to monitor power rails and flush/close FATFS file descriptors immediately upon detecting low-voltage interrupts (VDD droop).

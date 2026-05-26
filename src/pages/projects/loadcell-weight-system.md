@@ -63,6 +63,6 @@ float apply_kalman_filter(kalman_state_t* state, float raw_weight) {
 ---
 
 ## 🔍 Achievements & Performance
-- Filtered out **92%** of high-frequency mechanical vibration noise without introducing perceptible latency in reading updates.
-- Achieved stable, jitter-free weight display down to **milligram accuracy (0.001g)**.
-- Implemented low-power standby modes on both the HX711 and STM32, reducing inactive current consumption to under **15uA**.
+- **Digital Filtering**: Improved display stability under ambient mechanical vibration by implementing a combined Moving Average (base smoothing) and 1D Kalman filtering pipeline in C.
+- **Low-Power Design**: Configured low-power standby modes on both the HX711 and STM32, reducing inactive current draw during idle intervals.
+- **Response Trade-Off**: Optimized the Kalman filter coefficients ($Q$ process noise and $R$ measurement noise) to minimize response latency during weight changes while maintaining a stable, jitter-free static display.

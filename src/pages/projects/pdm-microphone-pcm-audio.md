@@ -19,7 +19,7 @@ This project showcases the capture, processing, and double-buffering of digital 
 +-------------------+                            +---------------------+                    +---------------------+
 ```
 
-- **PDM Interface**: A digital audio standard that represents signal amplitude through pulse density (1-bit stream). Very immune to electromagnetic interference, making it ideal for compact hardware like Axon cameras.
+- **PDM Interface**: A digital audio standard that represents signal amplitude through pulse density (1-bit high-frequency stream). It has high immunity to electromagnetic interference, making it ideal for compact wearable devices and high-density boards.
 - **EasyDMA**: nRF52's hardware Direct Memory Access, which transfers compiled audio samples directly from the PDM peripheral into RAM without CPU intervention.
 - **Decimation Filter**: Built into the nRF52 PDM hardware, this filter downsamples the high-speed 1-bit stream into a standard 16-bit PCM stream at 16kHz.
 
@@ -61,7 +61,7 @@ void pdm_event_handler(nrfx_pdm_evt_t const * p_event) {
 
 ---
 
-## 🔍 Key Performance Metrics
-- **Zero-Latency Capture**: CPU utilization during PDM audio capture is **less than 2%**, as data transfer is fully offloaded to EasyDMA.
-- **Flawless Real-Time Audio**: Sampling at **16kHz, 16-bit mono**, perfect for vocal capture and speech recognition models.
-- **Double Buffer Protection**: Achieved continuous streaming over **48 hours** with **zero overrun or frame-drop interrupts**.
+## 🔍 Technical Performance & Trade-offs
+- **DMA Offloading**: Offloaded PDM clocking and data collection entirely to **EasyDMA**, keeping CPU utilization under **5%** during continuous recording at 16kHz.
+- **PCM Configuration**: Configured the hardware decimation filter for a **16kHz sample rate, 16-bit mono PCM format** (oversampling ratio of 64).
+- **Double-Buffer Timing**: Implemented a ping-pong buffer architecture to handle buffer-release and buffer-request events within the `nrfx_pdm` ISR, ensuring zero data loss and jitter-free queue submission.

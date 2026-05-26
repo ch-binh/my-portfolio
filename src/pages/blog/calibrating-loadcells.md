@@ -108,4 +108,4 @@ float kalman_update(kalman_state_t* state, float measurement) {
 
 ## Summary
 
-Combining tare offset calibration with a real-time Kalman filter running on the Cortex-M microcontroller yields highly stable, jitter-free weight readings down to milligram precision—making the system perfectly suited for high-reliability medical or industrial measurement applications.
+Integrating zero-point tare calibration with a real-time 1D Kalman filter on a Cortex-M MCU significantly reduces high-frequency mechanical vibration noise. This double-stage filtering approach (SMA for base smoothing, Kalman for transient response) provides a stable weight display under ambient disturbances while maintaining low computational overhead.

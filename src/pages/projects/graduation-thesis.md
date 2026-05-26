@@ -24,7 +24,7 @@ graph LR
         System --> Sec[TLS Encryption]
     end
     subgraph Cloud Backend
-        Sec --> AWS[Axon Cloud Gateway]
+        Sec --> AWS[Cloud Gateway]
     end
 ```
 
@@ -52,4 +52,4 @@ Implemented the edge daemon using **Golang** to exploit its lightweight concurre
 
 ## 🔍 Results & Achievements
 - Achieved continuous, stable data logging over **100+ hours** of tests with **0% packet loss** under simulated network disruptions (thanks to the local SQLite buffer).
-- Reduced peak system power consumption by **35%** by implementing dynamic CPU frequency scaling and peripheral state power management.
+- Optimized power consumption on the gateway by implementing dynamic CPU frequency scaling (via scaling governors in Linux) and configuring automatic power suspend for unused peripheral interfaces.
