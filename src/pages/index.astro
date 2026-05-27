@@ -7,123 +7,162 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
 <Layout title="Binh Pham - Embedded Systems & Firmware Consultant">
-  <!-- Spotlight Effect in Hero Background -->
-  <div class="hero-spotlight"></div>
+  <!-- Subtle warm spotlight in the background -->
+  <div class="warm-spotlight"></div>
 
-  <!-- Hero Section (Two-Column Grid) -->
+  <!-- Hero Section -->
   <div class="hero-section">
     <div class="hero-grid">
-      <!-- Left Column: Bio Details -->
+      <!-- Left Column: Editorial Headline & CTAs -->
       <div class="hero-details">
-        <div class="mascot-container">
-          <img 
-            src={`${baseUrl}linh_vat.png`} 
-            alt="Saki Mascot" 
-            class="mascot-avatar"
-          />
-        </div>
-        <h1 class="greeting">
-          Hi, I'm <span class="name-gradient">{name}</span> <span class="led-pulse">//</span>
+        <span class="sys-label">[ STATUS: ACTIVE // embedded_systems ]</span>
+        <h1 class="hero-headline">
+          I build stable firmware for real-world hardware.
         </h1>
-        <p class="role-title">Embedded Firmware & Systems Engineer</p>
-        <p class="bio-intro">
-          I build and debug firmware for Cortex-M systems (STM32, nRF52), focusing on low-level peripheral drivers (SPI, I2C, UART, SDMMC, DMA), RTOS task scheduling, and hardware-to-software integration.
+        <p class="hero-subheadline">
+          C/C++, RTOS, Embedded Linux, peripheral drivers, sensor processing, PDM/I2S audio capture, and hardware bring-up.
         </p>
-        <p class="bio-intro availability">
-          ⚡ Available for technical consulting, custom driver development, and system integration.
-        </p>
+        
+        <div class="hero-ctas">
+          <a href={`${baseUrl}projects/`} class="btn-primary">View Projects</a>
+          <a href={`${baseUrl}contact/`} class="btn-secondary">Contact Me</a>
+        </div>
       </div>
 
-      <!-- Right Column: Visual Prototyping Setup -->
+      <!-- Right Column: Visual Mascot with Coordinates -->
       <div class="hero-visual">
-        <div class="image-wrapper">
-          <img 
-            src={`${baseUrl}hardware_hero.png`} 
-            alt="STM32 hardware prototyping board under spotlight" 
-            class="hardware-hero-img"
-          />
-          <div class="image-glow"></div>
+        <div class="mascot-frame">
+          <!-- Absolute Positioned Technical Annotations -->
+          <div class="tech-tag pos-top-left">[ MCU: STM32 ]</div>
+          <div class="tech-tag pos-top-right">[ RTOS: ZEPHYR ]</div>
+          <div class="tech-tag pos-bottom-left">[ DMA: ACTIVE ]</div>
+          <div class="tech-tag pos-bottom-right">[ CLK: 120MHz ]</div>
+
+          <div class="mascot-wrapper">
+            <img 
+              src={`${baseUrl}linh_vat.png`} 
+              alt="Black Tech Cat with Coffee Mascot" 
+              class="mascot-img"
+            />
+            <!-- Tiny floating steam animation over the coffee cup location -->
+            <div class="steam-holder">
+              <span class="steam-line steam-1"></span>
+              <span class="steam-line steam-2"></span>
+              <span class="steam-line steam-3"></span>
+            </div>
+            <div class="mascot-glow"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Freelance Services -->
-  <div class="section-block services-section">
-    <h2 class="serif-header">💼 How I Can Help Your Product</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>🔌 Custom Driver Development</h3>
-        <p>Interfacing specialized sensors, displays, or storage devices via SPI, I2C, UART, SDMMC, and custom register-level configurations.</p>
+  <!-- Capabilities (Asymmetric Technical Panels) -->
+  <div class="section-block capabilities-section">
+    <span class="section-num">01 //</span>
+    <h2 class="serif-section-header">Capabilities</h2>
+    
+    <div class="capabilities-grid">
+      <div class="capability-panel">
+        <div class="panel-header">
+          <span class="panel-num">01 /</span>
+          <h3>Driver Development</h3>
+        </div>
+        <p>Interfacing specialized sensors, displays, and storage devices via register-level configurations (SPI, I2C, UART, SDMMC, DMA).</p>
       </div>
-      <div class="service-card">
-        <h3>⚙️ RTOS & Multi-threaded Architecture</h3>
-        <p>Designing stable, low-latency firmware architectures using FreeRTOS or Zephyr to ensure thread safety and avoid race conditions.</p>
+
+      <div class="capability-panel">
+        <div class="panel-header">
+          <span class="panel-num">02 /</span>
+          <h3>RTOS Architecture</h3>
+        </div>
+        <p>Designing low-latency multi-task schedules, thread-safe memory models, and preemption configurations using FreeRTOS or Zephyr RTOS.</p>
       </div>
-      <div class="service-card">
-        <h3>🎙️ Audio & Sensor Signal Processing</h3>
-        <p>High-precision digital audio capturing (PDM/I2S) and sensor filtering (Kalman, SMA) to clean up raw measurement data.</p>
+
+      <div class="capability-panel">
+        <div class="panel-header">
+          <span class="panel-num">03 /</span>
+          <h3>Signal & Sensor Processing</h3>
+        </div>
+        <p>High-precision digital filtering in C (1D Kalman, SMA), digital audio decimation (PDM-to-PCM), and calibration algorithms.</p>
       </div>
     </div>
   </div>
 
-  <!-- Tech Stack Grid -->
+  <!-- Core Stack (Horizontal Tag Cloud) -->
   <div class="section-block stack-section">
-    <h2 class="serif-header">🛠️ Core Stack</h2>
-    <div class="badge-grid">
-      <span class="badge">C / C++</span>
-      <span class="badge">Golang</span>
-      <span class="badge">FreeRTOS</span>
-      <span class="badge">Zephyr RTOS</span>
-      <span class="badge">Embedded Linux</span>
-      <span class="badge">Yocto Project</span>
-      <span class="badge">DMA & Peripherals</span>
-      <span class="badge">TCP/IP & BLE</span>
-      <span class="badge">GDB & J-Link</span>
-      <span class="badge">Saleae Logic</span>
+    <span class="section-num">02 //</span>
+    <h2 class="serif-section-header">System Registry</h2>
+    <div class="stack-cloud">
+      <span class="stack-tag">C / C++</span>
+      <span class="stack-tag">Golang</span>
+      <span class="stack-tag">FreeRTOS</span>
+      <span class="stack-tag">Zephyr RTOS</span>
+      <span class="stack-tag">Embedded Linux</span>
+      <span class="stack-tag">Yocto Project</span>
+      <span class="stack-tag">DMA & Peripherals</span>
+      <span class="stack-tag">TCP/IP & BLE</span>
+      <span class="stack-tag">GDB & J-Link</span>
+      <span class="stack-tag">Saleae Logic</span>
     </div>
   </div>
 
-  <!-- Quick Nav (CTA) -->
-  <div class="section-block cta-section">
-    <h2 class="serif-header">📂 Explore My Work</h2>
-    <div class="cta-grid">
-      <a href={`${baseUrl}projects/`} class="cta-card">
-        <h3>Projects →</h3>
-        <p>Graduation thesis, HX711 Loadcell, nRF52 PDM Audio, and STM32 DMA debugging journals.</p>
+  <!-- Directory Index (Large Asymmetric Navigation Blocks) -->
+  <div class="section-block directory-section">
+    <span class="section-num">03 //</span>
+    <h2 class="serif-section-header">Directory Index</h2>
+    
+    <div class="directory-grid">
+      <a href={`${baseUrl}projects/`} class="dir-block main-dir">
+        <div class="dir-meta">[ REGISTRY: PROJECTS ]</div>
+        <h3>Explore Selected Works</h3>
+        <p>Graduation edge gateway, STM32 SDMMC logging, PDM microphones, and loadcell calibration logs.</p>
+        <span class="dir-arrow">Projects Registry →</span>
       </a>
-      <a href={`${baseUrl}blog/`} class="cta-card">
-        <h3>Blog Logs →</h3>
-        <p>Technical diaries on PDM-to-PCM conversion and digital Kalman noise filtering in C.</p>
+
+      <a href={`${baseUrl}blog/`} class="dir-block sub-dir">
+        <div class="dir-meta">[ RECORDS: LOGS ]</div>
+        <h3>Engineering Journal</h3>
+        <p>In-depth technical logs on digital noise filters, RTOS scheduling, and low-level debugging diaries.</p>
+        <span class="dir-arrow">View Blog Logs →</span>
       </a>
     </div>
   </div>
 
-  <!-- Warm Get in Touch -->
-  <div class="section-block contact-section">
-    <h2 class="serif-header">✉️ Let's Connect</h2>
-    <p>Always open to discuss low-level debugging, RTOS task scheduling, or Embedded Linux driver development.</p>
-    <div class="contact-links">
-      <a href="mailto:pcbinh.3005@gmail.com" class="contact-button">Email Me</a>
-      <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer" class="contact-button">GitHub</a>
-      <a href="https://www.linkedin.com/in/pham-chau-binh/" target="_blank" rel="noopener noreferrer" class="contact-button">LinkedIn</a>
+  <!-- Let's Connect (Warm Editorial CTA) -->
+  <div class="section-block connect-section">
+    <div class="connect-card">
+      <div class="connect-header">
+        <span class="status-indicator"></span>
+        <span class="connect-tag">[ CHANNEL: CONNECT ]</span>
+      </div>
+      <h3>Have a complex firmware bug or a hardware prototyping idea?</h3>
+      <p>Let's chat. I'm always open to discuss custom drivers, RTOS architectures, or low-level technical collaborations.</p>
+      
+      <div class="connect-actions">
+        <a href="mailto:pcbinh.3005@gmail.com?subject=Let's%20Connect" class="btn-primary">Let's connect via Email</a>
+        <div class="secondary-links">
+          <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          <a href="https://www.linkedin.com/in/pham-chau-binh/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+        </div>
+      </div>
     </div>
   </div>
 </Layout>
 
 <style>
-  /* Hero Spotlight Background */
-  .hero-spotlight {
+  /* Warm breathing spotlight effect behind hero */
+  .warm-spotlight {
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
     transform: translateX(-50%);
     width: 600px;
-    height: 350px;
+    height: 400px;
     background: radial-gradient(
-      ellipse at center,
-      rgba(56, 189, 248, 0.05) 0%,
-      rgba(11, 15, 25, 0) 70%
+      circle,
+      rgba(232, 201, 154, 0.25) 0%,
+      rgba(255, 247, 232, 0) 70%
     );
     pointer-events: none;
     z-index: 0;
@@ -132,210 +171,548 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 
   @keyframes spotlight-breath {
     0%, 100% {
-      opacity: 0.7;
       transform: translateX(-50%) scale(0.95);
+      opacity: 0.8;
     }
     50% {
-      opacity: 1.2;
       transform: translateX(-50%) scale(1.05);
+      opacity: 1.2;
     }
   }
 
-  /* Two-Column Hero Grid */
+  /* Hero Grid Structure (Art-Directed Minimal) */
   .hero-section {
     position: relative;
     z-index: 1;
-    margin-top: 1.5rem;
-    margin-bottom: 4rem;
-    animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 6rem;
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3.5rem;
     align-items: center;
+    width: 100%;
   }
 
   @media (max-width: 768px) {
     .hero-grid {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 3rem;
+      text-align: center;
     }
   }
 
-  /* Mascot Avatar Styling */
-  .mascot-container {
+  /* Left Hero Details */
+  .hero-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .hero-details {
+      align-items: center;
+    }
+  }
+
+  .sys-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
     margin-bottom: 1.25rem;
-    display: inline-block;
-    animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  .mascot-avatar {
-    width: 88px;
-    height: 88px;
-    border-radius: 22px;
-    object-fit: cover;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.6);
-    transition: all 0.3s var(--ease-expo);
-    background-color: #111827;
-    display: block;
-  }
-
-  .mascot-container:hover .mascot-avatar {
-    border-color: var(--accent-color);
-    transform: translateY(-2px) scale(1.04);
-    box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.25);
-  }
-
-  .greeting {
+  .hero-headline {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 2.75rem;
+    font-size: 3.25rem;
     font-weight: 500;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-  }
-
-  .name-gradient {
-    color: var(--accent-color);
-    background: linear-gradient(to right, #38bdf8, #818cf8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* Pulsing LED Double Slash */
-  .led-pulse {
-    color: var(--accent-color);
-    display: inline-block;
-    animation: led-heartbeat 3s infinite ease-in-out;
-  }
-
-  @keyframes led-heartbeat {
-    0%, 100% {
-      opacity: 0.3;
-      text-shadow: 0 0 2px rgba(56, 189, 248, 0);
-    }
-    50% {
-      opacity: 1.0;
-      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
-    }
-  }
-
-  .role-title {
-    font-size: 1.25rem;
-    font-weight: 500;
+    line-height: 1.12;
     color: var(--text-color);
+    letter-spacing: -0.02em;
+    margin-top: 0;
     margin-bottom: 1.5rem;
   }
 
-  .bio-intro {
-    font-size: 1.05rem;
+  @media (max-width: 480px) {
+    .hero-headline {
+      font-size: 2.5rem;
+    }
+  }
+
+  .hero-subheadline {
+    font-size: 1.15rem;
     color: var(--text-muted);
     line-height: 1.6;
-    max-width: 600px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 2.25rem;
+    max-width: 500px;
   }
 
-  .bio-intro.availability {
-    font-weight: 500;
-    color: var(--accent-color);
-    margin-top: 1rem;
-    margin-bottom: 0;
+  /* Hero CTAs */
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
   }
 
-  /* Hero Visual styling (STM32 spotlight) */
+  /* Primary Buttons */
+  .btn-primary {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-expo);
+    border: 1px solid transparent;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background-color: transparent;
+    color: var(--text-color);
+    border-color: var(--text-color);
+    transform: translateY(-2px);
+  }
+
+  /* Secondary Buttons */
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-expo);
+    border: 1px solid var(--border-color);
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--text-color);
+    transform: translateY(-2px);
+  }
+
+  /* Right Column: Mascot Visual with Floating Coordinates */
   .hero-visual {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .image-wrapper {
+  .mascot-frame {
     position: relative;
-    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  /* System Coordinate Tags */
+  .tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.725rem;
+    color: var(--text-muted);
+    opacity: 0.55;
+    position: absolute;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease-expo);
+  }
+
+  .mascot-frame:hover .tech-tag {
+    opacity: 0.95;
+    color: var(--text-color);
+  }
+
+  .pos-top-left { top: -5px; left: -10px; }
+  .pos-top-right { top: -5px; right: -10px; }
+  .pos-bottom-left { bottom: -5px; left: -10px; }
+  .pos-bottom-right { bottom: -5px; right: -10px; }
+
+  /* Mascot Circle Wrapper */
+  .mascot-wrapper {
+    position: relative;
+    border-radius: 30px;
     overflow: hidden;
     border: 1px solid var(--border-color);
-    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.8);
-    max-width: 280px;
-    aspect-ratio: 4 / 3;
-    transition: border-color 0.3s var(--ease-expo), box-shadow 0.3s var(--ease-expo);
+    background-color: #FFFDF9;
+    box-shadow: 0 20px 40px -25px rgba(122, 98, 70, 0.4);
+    width: 280px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s var(--ease-expo);
   }
 
-  .image-wrapper:hover {
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 20px 40px -20px rgba(56, 189, 248, 0.25);
+  .mascot-wrapper:hover {
+    transform: translateY(-4px);
+    border-color: var(--text-color);
+    box-shadow: 0 25px 50px -20px rgba(122, 98, 70, 0.6);
   }
 
-  .hardware-hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .mascot-img {
+    width: 92%;
+    height: 92%;
+    object-fit: contain;
     display: block;
-    animation: hardware-breath 8s infinite ease-in-out;
+    animation: mascot-float 6s infinite ease-in-out;
   }
 
-  @keyframes hardware-breath {
+  @keyframes mascot-float {
     0%, 100% {
-      filter: brightness(0.92) contrast(1.02);
-      transform: scale(1.0);
+      transform: translateY(0) scale(1.0);
     }
     50% {
-      filter: brightness(1.03) contrast(0.98);
-      transform: scale(1.02);
+      transform: translateY(-4px) scale(1.01);
     }
   }
 
-  .image-glow {
+  /* Interactive soft amber glow overlay */
+  .mascot-glow {
     position: absolute;
     inset: 0;
     background: radial-gradient(
-      circle at 50% 50%,
-      rgba(245, 158, 11, 0.04) 0%,
-      rgba(11, 15, 25, 0) 70%
+      circle at 65% 65%,
+      rgba(232, 201, 154, 0.08) 0%,
+      rgba(255, 247, 232, 0) 80%
     );
     pointer-events: none;
     z-index: 2;
   }
 
-  /* Elegant Serif Section Headers */
-  .serif-header {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.45rem !important;
-    font-weight: 500 !important;
-    letter-spacing: -0.01em !important;
-    text-transform: none !important;
-    color: #ffffff !important;
-    border-bottom: 1px solid var(--border-color) !important;
-    padding-bottom: 0.5rem !important;
-    margin-bottom: 1.5rem !important;
+  /* Tiny Coffee Steam Effect */
+  .steam-holder {
+    position: absolute;
+    bottom: 27%;
+    right: 32%;
+    display: flex;
+    gap: 2.5px;
+    pointer-events: none;
+    z-index: 3;
   }
 
-  /* Section Blocks with Cascading Animations */
+  .steam-line {
+    width: 1.5px;
+    height: 8px;
+    background-color: var(--text-muted);
+    opacity: 0;
+    border-radius: 9999px;
+  }
+
+  .steam-1 { animation: steam-rise 3s infinite ease-in-out; }
+  .steam-2 { animation: steam-rise 3s infinite ease-in-out 1s; }
+  .steam-3 { animation: steam-rise 3s infinite ease-in-out 2s; }
+
+  @keyframes steam-rise {
+    0% {
+      transform: translateY(0) scaleY(0.5);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.35;
+    }
+    80% {
+      transform: translateY(-6px) scaleY(1.2);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Section Styling (Editorial Asymmetric Layout) */
   .section-block {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
+    position: relative;
     opacity: 0;
     transform: translateY(15px);
   }
 
-  .services-section {
-    animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .serif-section-header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.85rem;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  /* Capabilities Grid (Asymmetric Panels) */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .capabilities-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+
+  .capability-panel {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    transition: all 0.35s var(--ease-expo);
+  }
+
+  .capability-panel:hover {
+    border-color: var(--text-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px -15px rgba(122, 98, 70, 0.3);
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .panel-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .capability-panel h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text-color);
+  }
+
+  .capability-panel p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* Core Stack (Horizontal Tag Cloud) */
+  .stack-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .stack-tag {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.45rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s var(--ease-expo);
+    cursor: default;
+  }
+
+  .stack-tag:hover {
+    border-color: var(--text-color);
+    background-color: var(--code-inline-bg);
+    transform: translateY(-1px);
+  }
+
+  /* Directory Index (Asymmetric Nav Blocks) */
+  .directory-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .directory-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .dir-block {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.25rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s var(--ease-expo);
+  }
+
+  .dir-block:hover {
+    border-color: var(--text-color);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px -20px rgba(122, 98, 70, 0.4);
+  }
+
+  .dir-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.725rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .dir-block h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color 0.3s var(--ease-expo);
+  }
+
+  .dir-block:hover h3 {
+    color: var(--accent-hover);
+  }
+
+  .dir-block p {
+    font-size: 0.925rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+  }
+
+  .dir-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+
+  /* Highlight projects block as main-dir */
+  .main-dir {
+    border-color: rgba(122, 98, 70, 0.4);
+    background: linear-gradient(135deg, #FFFDF9 0%, #FBF6EB 100%);
+  }
+
+  /* Connect Section (Warm Editorial Card) */
+  .connect-card {
+    background-color: #1F1E1B;
+    color: #FFF7E8;
+    border-radius: 24px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -25px rgba(0, 0, 0, 0.9);
+  }
+
+  .connect-card h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+
+  @media (max-width: 480px) {
+    .connect-card h3 {
+      font-size: 1.65rem;
+    }
+  }
+
+  .connect-card p {
+    color: #E8C99A;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2.25rem;
+    max-width: 550px;
+  }
+
+  .connect-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .status-indicator {
+    width: 6px;
+    height: 6px;
+    background-color: #B8895B;
+    border-radius: 9999px;
+    box-shadow: 0 0 8px #B8895B;
+  }
+
+  .connect-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.725rem;
+    color: #E8C99A;
+    letter-spacing: 0.05em;
+  }
+
+  .connect-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .connect-actions .btn-primary {
+    background-color: #FFF7E8;
+    color: #1F1E1B;
+  }
+
+  .connect-actions .btn-primary:hover {
+    background-color: transparent;
+    color: #FFF7E8;
+    border-color: #FFF7E8;
+  }
+
+  .secondary-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .secondary-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #E8C99A;
+    text-decoration: none;
+    transition: color 0.25s var(--ease-expo);
+  }
+
+  .secondary-links a:hover {
+    color: #ffffff;
+  }
+
+  /* Cascading Scroll / Load Entrance Keyframes */
+  .capabilities-section {
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: 0.2s;
   }
 
   .stack-section {
-    animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: 0.35s;
   }
 
-  .cta-section {
-    animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  .directory-section {
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: 0.5s;
   }
 
-  .contact-section {
-    animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  .connect-section {
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: 0.65s;
   }
 
@@ -344,151 +721,5 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
       opacity: 1;
       transform: translateY(0);
     }
-  }
-
-  /* Services Grid */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
-
-  @media (max-width: 768px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .service-card {
-    background-color: #111827;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s var(--ease-expo);
-  }
-
-  .service-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 25px -12px rgba(56, 189, 248, 0.15);
-  }
-
-  .service-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-    color: #ffffff;
-  }
-
-  .service-card p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  /* Badge Grid (Minimalist capsules) */
-  .badge-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-
-  .badge {
-    background-color: #111827;
-    color: #f1f5f9;
-    border: 1px solid var(--border-color);
-    padding: 0.4rem 0.8rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: all 0.2s var(--ease-expo);
-  }
-
-  .badge:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px -4px rgba(56, 189, 248, 0.2);
-  }
-
-  /* CTA Grid (Quick navigation cards) */
-  .cta-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  @media (max-width: 600px) {
-    .cta-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .cta-card {
-    background-color: #111827;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s var(--ease-expo);
-    display: block;
-    text-decoration: none;
-  }
-
-  .cta-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 25px -12px rgba(56, 189, 248, 0.15);
-  }
-
-  .cta-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.15rem;
-    color: #ffffff;
-    transition: color 0.25s var(--ease-expo);
-  }
-
-  .cta-card:hover h3 {
-    color: var(--accent-color);
-  }
-
-  .cta-card p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  /* Contact Block */
-  .contact-section p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .contact-links {
-    display: flex;
-    gap: 0.8rem;
-  }
-
-  .contact-button {
-    background-color: #111827;
-    color: #ffffff;
-    border: 1px solid var(--border-color);
-    padding: 0.5rem 1.2rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.2s var(--ease-expo);
-    text-decoration: none;
-  }
-
-  .contact-button:hover {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #0b0f19;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px -8px rgba(56, 189, 248, 0.3);
   }
 </style>
