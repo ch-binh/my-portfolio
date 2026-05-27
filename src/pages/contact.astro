@@ -1,376 +1,205 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const rawBaseUrl = import.meta.env.BASE_URL;
-const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
-<Layout title="Contact - Binh Pham Portfolio">
-  <div class="contact-container">
-    <!-- Hero / Intro -->
-    <div class="contact-hero">
+<Layout title="Contact Me - Binh Pham Portfolio">
+  <div class="contact-page">
+    <header class="intro">
+      <p class="label">Contact</p>
       <h1>Contact Me</h1>
-      <p class="contact-intro">
-        I’m an **Embedded Systems & Firmware Engineer** passionate about building reliable low-level software, optimizing RTOS applications, and bringing hardware designs to life.
+      <p>
+        Have a firmware question, a hardware problem to investigate, or an idea worth
+        discussing? Send me a message and I will get back to you.
       </p>
-      <p class="contact-intro secondary">
-        Whether you have an interesting hardware idea, a tricky bug to solve, or just want to network and discuss embedded architectures, I'm always open to connect.
-      </p>
-    </div>
+    </header>
 
-    <!-- Primary Action: Email & Guidance -->
-    <div class="primary-section">
-      <div class="email-cta-card">
-        <div class="email-header">
-          <span class="icon">✉️</span>
-          <h2>Email</h2>
-        </div>
-        <p class="email-desc">
-          For project inquiries, networking, or general technical chat, feel free to email me directly.
-        </p>
-        <a 
-          href="mailto:pcbinh.3005@gmail.com?subject=Let's%20Connect" 
-          class="email-btn"
-        >
-          Let's connect via Email
-        </a>
+    <section class="email-card">
+      <div>
+        <p class="label">Primary channel</p>
+        <h2>Email</h2>
+        <p class="muted">Best for technical discussions and professional connections.</p>
       </div>
+      <a href="mailto:pcbinh.3005@gmail.com?subject=Let's%20Connect" class="email-button">
+        pcbinh.3005@gmail.com
+      </a>
+    </section>
 
-      <div class="guidance-card">
-        <h3>💡 Let’s chat about:</h3>
-        <ul class="guidance-list">
-          <li><strong>Technical Brainstorming</strong>: MCU selection, peripherals, and system architecture.</li>
-          <li><strong>Troubleshooting & Advice</strong>: Solving complex firmware bugs and DMA/RTOS issues.</li>
-          <li><strong>Opportunities & Collaboration</strong>: Custom drivers, hardware bring-up, and consulting.</li>
-          <li><strong>General Networking</strong>: Tech trends and sharing engineering experiences.</li>
-        </ul>
+    <section class="discussion">
+      <p class="label">Topics</p>
+      <h2>We can talk about</h2>
+      <div class="topic-grid">
+        <p><strong>Firmware debugging</strong><span>DMA, timing, interrupts, and peripheral behavior.</span></p>
+        <p><strong>Embedded systems</strong><span>MCUs, RTOS architecture, drivers, and board bring-up.</span></p>
+        <p><strong>Engineering exchange</strong><span>Technical learning, workflows, and practical experience.</span></p>
       </div>
-    </div>
+    </section>
 
-    <!-- Secondary Links Grid -->
-    <div class="secondary-grid">
-      <!-- Curriculum Vitae -->
-      <div class="secondary-card cv-card">
-        <div class="card-header">
-          <span class="card-icon">📄</span>
-          <h3>Curriculum Vitae</h3>
-        </div>
-        <p>Download my CV for a concise overview of my firmware experience, technical stack, and selected embedded projects.</p>
-        <a href={`${baseUrl}Binh_Pham_Embedded_Systems_CV.pdf`} download class="cv-btn">Download CV ↓</a>
+    <section class="profiles">
+      <div>
+        <p class="label">Details</p>
+        <h2>Profiles</h2>
       </div>
-
-      <!-- LinkedIn -->
-      <div class="secondary-card">
-        <div class="card-header">
-          <span class="card-icon">💼</span>
-          <h3>LinkedIn</h3>
-        </div>
-        <p>Connect with me professionally and view career updates.</p>
-        <a href="https://www.linkedin.com/in/pham-chau-binh/" target="_blank" rel="noopener noreferrer" class="card-link">linkedin.com/in/pham-chau-binh →</a>
+      <div class="profile-actions">
+        <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/pham-chau-binh/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
-
-      <!-- GitHub -->
-      <div class="secondary-card">
-        <div class="card-header">
-          <span class="card-icon">💻</span>
-          <h3>GitHub</h3>
-        </div>
-        <p>Explore my repositories, firmware experiments, and embedded debugging notes.</p>
-        <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer" class="card-link">github.com/ch-binh →</a>
-      </div>
-    </div>
-
-    <!-- Bottom CTA: Debug Offer -->
-    <div class="bottom-debug-cta">
-      <div class="debug-icon">🐛</div>
-      <div class="debug-content">
-        <h3>Have a firmware issue that is hard to debug?</h3>
-        <p>Send me a short description of the problem and I’ll take a look.</p>
-      </div>
-    </div>
+    </section>
   </div>
 </Layout>
 
 <style>
-  .contact-container {
-    margin-top: 1.5rem;
+  .contact-page {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
-  /* Hero Section */
-  .contact-hero h1 {
-    font-size: 2.5rem;
+  .intro {
+    margin-bottom: 0.25rem;
+  }
+
+  .label {
+    font: 500 0.72rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 0.7rem;
+  }
+
+  .intro h1 {
     margin-bottom: 1rem;
-    letter-spacing: -0.02em;
   }
 
-  .contact-intro {
-    font-size: 1.15rem;
-    color: var(--text-color);
-    line-height: 1.6;
-    max-width: 700px;
-    margin: 0 0 0.75rem 0;
-  }
-
-  .contact-intro.secondary {
-    font-size: 1.05rem;
+  .intro > p:last-child {
+    max-width: 620px;
     color: var(--text-muted);
-    font-weight: 400;
+    font-size: 1.04rem;
+    line-height: 1.7;
+    margin: 0;
   }
 
-  /* Primary Section (Email + Guidance Grid) */
-  .primary-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+  .contact-page section {
+    margin: 0;
+    background: #fffdf9;
+    border-color: var(--border-color);
   }
 
-  @media (max-width: 768px) {
-    .primary-section {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Email Card */
-  .email-cta-card {
-    background-color: #111827;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s var(--ease-expo);
-  }
-
-  .email-cta-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 30px -12px rgba(56, 189, 248, 0.15);
-  }
-
-  .email-header {
+  .email-card {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
+    justify-content: space-between;
+    gap: 1.5rem;
+    background: linear-gradient(145deg, #fffdf9 0%, #fbf4e7 100%) !important;
+    padding: 2rem !important;
   }
 
-  .email-header .icon {
-    font-size: 1.75rem;
-  }
-
-  .email-header h2 {
-    font-size: 1.5rem;
-    margin: 0;
-    color: #ffffff;
-  }
-
-  .email-desc {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    margin: 0 0 1.5rem 0;
-  }
-
-  .email-btn {
-    background-color: var(--accent-color);
-    color: #0b0f19;
-    padding: 0.75rem 1.25rem;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.2s var(--ease-expo);
-  }
-
-  .email-btn:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px -8px rgba(56, 189, 248, 0.4);
-  }
-
-  /* Guidance Card */
-  .guidance-card {
-    background-color: #0f172a;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    border-radius: 12px;
-    padding: 2rem;
-  }
-
-  .guidance-card h3 {
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-  }
-
-  .guidance-list {
-    list-style: none;
+  .email-card h2,
+  .discussion h2,
+  .profiles h2 {
+    margin: 0 0 0.55rem;
+    border: 0;
     padding: 0;
+    font-size: 1.35rem;
+  }
+
+  .muted {
+    color: var(--text-muted);
     margin: 0;
+    font-size: 0.94rem;
+  }
+
+  .email-button {
+    flex-shrink: 0;
+    color: #fffdf9;
+    background: var(--accent-color);
+    padding: 0.8rem 1.15rem;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+
+  .email-button:hover {
+    color: #fffdf9;
+    background: var(--accent-hover);
+  }
+
+  .discussion {
+    padding: 2rem !important;
+  }
+
+  .profiles {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 2rem !important;
+    background: linear-gradient(145deg, #fffdf9 0%, #fbf4e7 100%) !important;
   }
 
-  .guidance-list li {
+  .profiles h2 {
+    margin-bottom: 0;
+  }
+
+  .profile-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .profile-actions a {
+    padding: 0.65rem 0.85rem;
     font-size: 0.9rem;
-    color: var(--text-color);
-    line-height: 1.5;
-    position: relative;
-    padding-left: 1.25rem;
+    font-weight: 600;
   }
 
-  .guidance-list li::before {
-    content: "•";
-    color: var(--accent-color);
-    position: absolute;
-    left: 0;
-    font-size: 1.2rem;
-    line-height: 1.2;
-  }
-
-  .guidance-list strong {
-    color: #ffffff;
-  }
-
-  /* Secondary Grid (CV, LinkedIn, GitHub) */
-  .secondary-grid {
+  .topic-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1rem;
+    margin-top: 1.4rem;
   }
 
-  @media (max-width: 900px) {
-    .secondary-grid {
+  .topic-grid p {
+    padding: 1.1rem;
+    margin: 0;
+    border: 1px solid rgba(122, 98, 70, 0.16);
+    border-radius: 9px;
+    background: #fbf4e7;
+  }
+
+  .topic-grid strong {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.95rem;
+  }
+
+  .topic-grid span {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 680px) {
+    .email-card {
+      display: block;
+    }
+
+    .email-button {
+      display: block;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .topic-grid {
       grid-template-columns: 1fr;
     }
-  }
 
-  .secondary-card {
-    background-color: #111827;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s var(--ease-expo);
-  }
+    .profiles {
+      display: block;
+    }
 
-  .secondary-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 25px -12px rgba(56, 189, 248, 0.15);
-  }
-
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .card-icon {
-    font-size: 1.25rem;
-  }
-
-  .secondary-card h3 {
-    margin: 0;
-    font-size: 1.15rem;
-    color: #ffffff;
-  }
-
-  .secondary-card p {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    margin: 0 0 1.25rem 0;
-    flex-grow: 1;
-  }
-
-  .card-link {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: color 0.2s var(--ease-expo);
-  }
-
-  .card-link:hover {
-    color: var(--accent-hover);
-    text-decoration: underline;
-  }
-
-  /* CV Highlight Card */
-  .cv-card {
-    border-color: rgba(56, 189, 248, 0.3);
-    background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
-  }
-
-  .cv-btn {
-    background-color: transparent;
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.2s var(--ease-expo);
-  }
-
-  .cv-btn:hover {
-    background-color: var(--accent-color);
-    color: #0b0f19;
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
-  }
-
-  /* Bottom Debug Offer Card */
-  .bottom-debug-cta {
-    background-color: #0f172a;
-    border: 1px dashed rgba(239, 68, 68, 0.4);
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    transition: border-color 0.3s var(--ease-expo);
-  }
-
-  .bottom-debug-cta:hover {
-    border-color: rgba(239, 68, 68, 0.8);
-  }
-
-  .debug-icon {
-    font-size: 2.25rem;
-    flex-shrink: 0;
-  }
-
-  .bottom-debug-cta h3 {
-    margin-top: 0;
-    margin-bottom: 0.25rem;
-    font-size: 1.15rem;
-    color: #ffffff;
-  }
-
-  .bottom-debug-cta p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  @media (max-width: 600px) {
-    .bottom-debug-cta {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 1.5rem;
+    .profile-actions {
+      margin-top: 1.3rem;
     }
   }
 </style>

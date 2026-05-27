@@ -1,725 +1,233 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const name = "Binh Pham";
 
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
-<Layout title="Binh Pham - Embedded Systems & Firmware Consultant">
-  <!-- Subtle warm spotlight in the background -->
-  <div class="warm-spotlight"></div>
-
-  <!-- Hero Section -->
-  <div class="hero-section">
-    <div class="hero-grid">
-      <!-- Left Column: Editorial Headline & CTAs -->
-      <div class="hero-details">
-        <span class="sys-label">[ STATUS: ACTIVE // embedded_systems ]</span>
-        <h1 class="hero-headline">
-          I build stable firmware for real-world hardware.
-        </h1>
-        <p class="hero-subheadline">
-          C/C++, RTOS, Embedded Linux, peripheral drivers, sensor processing, PDM/I2S audio capture, and hardware bring-up.
-        </p>
-        
-        <div class="hero-ctas">
-          <a href={`${baseUrl}projects/`} class="btn-primary">View Projects</a>
-          <a href={`${baseUrl}contact/`} class="btn-secondary">Contact Me</a>
-        </div>
-      </div>
-
-      <!-- Right Column: Visual Mascot with Coordinates -->
-      <div class="hero-visual">
-        <div class="mascot-frame">
-          <!-- Absolute Positioned Technical Annotations -->
-          <div class="tech-tag pos-top-left">[ MCU: STM32 ]</div>
-          <div class="tech-tag pos-top-right">[ RTOS: ZEPHYR ]</div>
-          <div class="tech-tag pos-bottom-left">[ DMA: ACTIVE ]</div>
-          <div class="tech-tag pos-bottom-right">[ CLK: 120MHz ]</div>
-
-          <div class="mascot-wrapper">
-            <img 
-              src={`${baseUrl}linh_vat.png`} 
-              alt="Black Tech Cat with Coffee Mascot" 
-              class="mascot-img"
-            />
-            <!-- Tiny floating steam animation over the coffee cup location -->
-            <div class="steam-holder">
-              <span class="steam-line steam-1"></span>
-              <span class="steam-line steam-2"></span>
-              <span class="steam-line steam-3"></span>
-            </div>
-            <div class="mascot-glow"></div>
-          </div>
-        </div>
+<Layout title="Binh Pham - Embedded Firmware Engineer" wide dark>
+  <section class="landing">
+    <div class="copy">
+      <p class="status"><span></span> Embedded systems / signal online</p>
+      <p class="role">Firmware engineer</p>
+      <h1>
+        <span class="greeting">Hi, I'm</span>
+        <span class="signature">Binh Pham</span>
+      </h1>
+      <p class="intro">
+        I build reliable embedded firmware for real-time systems, sensors, storage, and digital audio.
+      </p>
+      <div class="links">
+        <a href={`${baseUrl}projects/`}>View projects</a>
+        <a href={`${baseUrl}contact/`}>Contact</a>
       </div>
     </div>
-  </div>
 
-  <!-- Capabilities (Asymmetric Technical Panels) -->
-  <div class="section-block capabilities-section">
-    <span class="section-num">01 //</span>
-    <h2 class="serif-section-header">Capabilities</h2>
-    
-    <div class="capabilities-grid">
-      <div class="capability-panel">
-        <div class="panel-header">
-          <span class="panel-num">01 /</span>
-          <h3>Driver Development</h3>
-        </div>
-        <p>Interfacing specialized sensors, displays, and storage devices via register-level configurations (SPI, I2C, UART, SDMMC, DMA).</p>
-      </div>
-
-      <div class="capability-panel">
-        <div class="panel-header">
-          <span class="panel-num">02 /</span>
-          <h3>RTOS Architecture</h3>
-        </div>
-        <p>Designing low-latency multi-task schedules, thread-safe memory models, and preemption configurations using FreeRTOS or Zephyr RTOS.</p>
-      </div>
-
-      <div class="capability-panel">
-        <div class="panel-header">
-          <span class="panel-num">03 /</span>
-          <h3>Signal & Sensor Processing</h3>
-        </div>
-        <p>High-precision digital filtering in C (1D Kalman, SMA), digital audio decimation (PDM-to-PCM), and calibration algorithms.</p>
-      </div>
+    <div class="signal" aria-hidden="true">
+      <div class="ring"></div>
+      <div class="core"></div>
     </div>
-  </div>
-
-  <!-- Core Stack (Horizontal Tag Cloud) -->
-  <div class="section-block stack-section">
-    <span class="section-num">02 //</span>
-    <h2 class="serif-section-header">System Registry</h2>
-    <div class="stack-cloud">
-      <span class="stack-tag">C / C++</span>
-      <span class="stack-tag">Golang</span>
-      <span class="stack-tag">FreeRTOS</span>
-      <span class="stack-tag">Zephyr RTOS</span>
-      <span class="stack-tag">Embedded Linux</span>
-      <span class="stack-tag">Yocto Project</span>
-      <span class="stack-tag">DMA & Peripherals</span>
-      <span class="stack-tag">TCP/IP & BLE</span>
-      <span class="stack-tag">GDB & J-Link</span>
-      <span class="stack-tag">Saleae Logic</span>
-    </div>
-  </div>
-
-  <!-- Directory Index (Large Asymmetric Navigation Blocks) -->
-  <div class="section-block directory-section">
-    <span class="section-num">03 //</span>
-    <h2 class="serif-section-header">Directory Index</h2>
-    
-    <div class="directory-grid">
-      <a href={`${baseUrl}projects/`} class="dir-block main-dir">
-        <div class="dir-meta">[ REGISTRY: PROJECTS ]</div>
-        <h3>Explore Selected Works</h3>
-        <p>Graduation edge gateway, STM32 SDMMC logging, PDM microphones, and loadcell calibration logs.</p>
-        <span class="dir-arrow">Projects Registry →</span>
-      </a>
-
-      <a href={`${baseUrl}blog/`} class="dir-block sub-dir">
-        <div class="dir-meta">[ RECORDS: LOGS ]</div>
-        <h3>Engineering Journal</h3>
-        <p>In-depth technical logs on digital noise filters, RTOS scheduling, and low-level debugging diaries.</p>
-        <span class="dir-arrow">View Blog Logs →</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- Let's Connect (Warm Editorial CTA) -->
-  <div class="section-block connect-section">
-    <div class="connect-card">
-      <div class="connect-header">
-        <span class="status-indicator"></span>
-        <span class="connect-tag">[ CHANNEL: CONNECT ]</span>
-      </div>
-      <h3>Have a complex firmware bug or a hardware prototyping idea?</h3>
-      <p>Let's chat. I'm always open to discuss custom drivers, RTOS architectures, or low-level technical collaborations.</p>
-      
-      <div class="connect-actions">
-        <a href="mailto:pcbinh.3005@gmail.com?subject=Let's%20Connect" class="btn-primary">Let's connect via Email</a>
-        <div class="secondary-links">
-          <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer">GitHub →</a>
-          <a href="https://www.linkedin.com/in/pham-chau-binh/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 </Layout>
 
 <style>
-  /* Warm breathing spotlight effect behind hero */
-  .warm-spotlight {
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 400px;
-    background: radial-gradient(
-      circle,
-      rgba(232, 201, 154, 0.25) 0%,
-      rgba(255, 247, 232, 0) 70%
-    );
-    pointer-events: none;
-    z-index: 0;
-    animation: spotlight-breath 8s infinite ease-in-out;
+  :global(.container.wide header) {
+    margin-bottom: 0;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid rgba(139, 152, 165, 0.14);
   }
 
-  @keyframes spotlight-breath {
-    0%, 100% {
-      transform: translateX(-50%) scale(0.95);
-      opacity: 0.8;
-    }
-    50% {
-      transform: translateX(-50%) scale(1.05);
-      opacity: 1.2;
-    }
+  :global(.container.wide footer) {
+    display: none;
   }
 
-  /* Hero Grid Structure (Art-Directed Minimal) */
-  .hero-section {
+  :global(.container.wide) {
+    padding-bottom: 0;
+  }
+
+  .landing {
     position: relative;
-    z-index: 1;
-    min-height: 70vh;
+    min-height: calc(100vh - 92px);
+    margin: 0;
+    padding: clamp(4rem, 10vh, 7.5rem) 0 4rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     display: flex;
     align-items: center;
-    margin-bottom: 6rem;
-    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    overflow: hidden;
   }
 
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 3.5rem;
+  .landing:hover {
+    transform: none;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .copy {
+    position: relative;
+    z-index: 1;
+  }
+
+  .status {
+    display: flex;
     align-items: center;
-    width: 100%;
+    gap: 0.7rem;
+    color: var(--text-muted);
+    font: 0.7rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin-bottom: clamp(3.5rem, 9vh, 6rem);
   }
 
-  @media (max-width: 768px) {
-    .hero-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      text-align: center;
-    }
+  .status span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    box-shadow: 0 0 12px rgba(120, 220, 232, 0.8);
+    animation: pulse 2.6s ease-in-out infinite;
   }
 
-  /* Left Hero Details */
-  .hero-details {
+  .role {
+    color: var(--accent-color);
+    font: 500 0.73rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.3rem;
+  }
+
+  h1 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  @media (max-width: 768px) {
-    .hero-details {
-      align-items: center;
-    }
-  }
-
-  .sys-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.775rem;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-    margin-bottom: 1.25rem;
-  }
-
-  .hero-headline {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 3.25rem;
+    font-size: clamp(3.5rem, 8.7vw, 7.8rem);
+    line-height: 0.94;
+    letter-spacing: -0.072em;
     font-weight: 500;
-    line-height: 1.12;
+    margin: 0 0 2.35rem;
+  }
+
+  .greeting {
     color: var(--text-color);
-    letter-spacing: -0.02em;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
   }
 
-  @media (max-width: 480px) {
-    .hero-headline {
-      font-size: 2.5rem;
-    }
-  }
-
-  .hero-subheadline {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 2.25rem;
-    max-width: 500px;
-  }
-
-  /* Hero CTAs */
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  /* Primary Buttons */
-  .btn-primary {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    padding: 0.75rem 1.75rem;
-    border-radius: 9999px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s var(--ease-expo);
-    border: 1px solid transparent;
+  .signature {
+    position: relative;
     display: inline-block;
+    padding: 0 0 clamp(0.35rem, 1vw, 0.72rem);
+    color: transparent;
+    background: linear-gradient(103deg, #e6edf3 0%, #78dce8 48%, #8aa4ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
   }
 
-  .btn-primary:hover {
-    background-color: transparent;
-    color: var(--text-color);
-    border-color: var(--text-color);
-    transform: translateY(-2px);
-  }
-
-  /* Secondary Buttons */
-  .btn-secondary {
-    background-color: transparent;
-    color: var(--text-color);
-    padding: 0.75rem 1.75rem;
-    border-radius: 9999px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s var(--ease-expo);
-    border: 1px solid var(--border-color);
-    display: inline-block;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--text-color);
-    transform: translateY(-2px);
-  }
-
-  /* Right Column: Mascot Visual with Floating Coordinates */
-  .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .mascot-frame {
-    position: relative;
-    padding: 2rem;
-  }
-
-  /* System Coordinate Tags */
-  .tech-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.725rem;
-    color: var(--text-muted);
-    opacity: 0.55;
+  .signature::after {
+    content: "";
     position: absolute;
-    pointer-events: none;
-    transition: opacity 0.3s var(--ease-expo);
+    left: 0.07em;
+    bottom: 0;
+    width: min(48%, 3.4em);
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
   }
 
-  .mascot-frame:hover .tech-tag {
-    opacity: 0.95;
-    color: var(--text-color);
-  }
-
-  .pos-top-left { top: -5px; left: -10px; }
-  .pos-top-right { top: -5px; right: -10px; }
-  .pos-bottom-left { bottom: -5px; left: -10px; }
-  .pos-bottom-right { bottom: -5px; right: -10px; }
-
-  /* Mascot Circle Wrapper */
-  .mascot-wrapper {
-    position: relative;
-    border-radius: 30px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    background-color: #FFFDF9;
-    box-shadow: 0 20px 40px -25px rgba(122, 98, 70, 0.4);
-    width: 280px;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.4s var(--ease-expo);
-  }
-
-  .mascot-wrapper:hover {
-    transform: translateY(-4px);
-    border-color: var(--text-color);
-    box-shadow: 0 25px 50px -20px rgba(122, 98, 70, 0.6);
-  }
-
-  .mascot-img {
-    width: 92%;
-    height: 92%;
-    object-fit: contain;
-    display: block;
-    animation: mascot-float 6s infinite ease-in-out;
-  }
-
-  @keyframes mascot-float {
-    0%, 100% {
-      transform: translateY(0) scale(1.0);
-    }
-    50% {
-      transform: translateY(-4px) scale(1.01);
-    }
-  }
-
-  /* Interactive soft amber glow overlay */
-  .mascot-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      circle at 65% 65%,
-      rgba(232, 201, 154, 0.08) 0%,
-      rgba(255, 247, 232, 0) 80%
-    );
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* Tiny Coffee Steam Effect */
-  .steam-holder {
-    position: absolute;
-    bottom: 27%;
-    right: 32%;
-    display: flex;
-    gap: 2.5px;
-    pointer-events: none;
-    z-index: 3;
-  }
-
-  .steam-line {
-    width: 1.5px;
-    height: 8px;
-    background-color: var(--text-muted);
-    opacity: 0;
-    border-radius: 9999px;
-  }
-
-  .steam-1 { animation: steam-rise 3s infinite ease-in-out; }
-  .steam-2 { animation: steam-rise 3s infinite ease-in-out 1s; }
-  .steam-3 { animation: steam-rise 3s infinite ease-in-out 2s; }
-
-  @keyframes steam-rise {
-    0% {
-      transform: translateY(0) scaleY(0.5);
-      opacity: 0;
-    }
-    40% {
-      opacity: 0.35;
-    }
-    80% {
-      transform: translateY(-6px) scaleY(1.2);
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  /* Section Styling (Editorial Asymmetric Layout) */
-  .section-block {
-    margin-bottom: 6rem;
-    position: relative;
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  .section-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.775rem;
+  .intro {
+    max-width: 490px;
     color: var(--text-muted);
-    display: block;
-    margin-bottom: 0.35rem;
+    font-size: clamp(1rem, 1.4vw, 1.08rem);
+    line-height: 1.72;
+    margin-bottom: 2.8rem;
   }
 
-  .serif-section-header {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.85rem;
-    font-weight: 500;
-    letter-spacing: -0.015em;
-    color: var(--text-color);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.5rem;
-    margin-top: 0;
-    margin-bottom: 2rem;
-  }
-
-  /* Capabilities Grid (Asymmetric Panels) */
-  .capabilities-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .capabilities-grid {
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-  }
-
-  .capability-panel {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 2rem 1.75rem;
-    transition: all 0.35s var(--ease-expo);
-  }
-
-  .capability-panel:hover {
-    border-color: var(--text-color);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px -15px rgba(122, 98, 70, 0.3);
-  }
-
-  .panel-header {
+  .links {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .panel-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-  }
-
-  .capability-panel h3 {
-    margin: 0;
-    font-size: 1.15rem;
-    color: var(--text-color);
-  }
-
-  .capability-panel p {
-    margin: 0;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.55;
-  }
-
-  /* Core Stack (Horizontal Tag Cloud) */
-  .stack-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-  }
-
-  .stack-tag {
-    font-family: 'JetBrains Mono', monospace;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 0.45rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.2s var(--ease-expo);
-    cursor: default;
-  }
-
-  .stack-tag:hover {
-    border-color: var(--text-color);
-    background-color: var(--code-inline-bg);
-    transform: translateY(-1px);
-  }
-
-  /* Directory Index (Asymmetric Nav Blocks) */
-  .directory-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 1.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .directory-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .dir-block {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 2.25rem;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.4s var(--ease-expo);
-  }
-
-  .dir-block:hover {
-    border-color: var(--text-color);
-    transform: translateY(-4px);
-    box-shadow: 0 15px 35px -20px rgba(122, 98, 70, 0.4);
-  }
-
-  .dir-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.725rem;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .dir-block h3 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    font-size: 1.5rem;
-    color: var(--text-color);
-    transition: color 0.3s var(--ease-expo);
-  }
-
-  .dir-block:hover h3 {
-    color: var(--accent-hover);
-  }
-
-  .dir-block p {
-    font-size: 0.925rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin: 0 0 2rem 0;
-  }
-
-  .dir-arrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-color);
-  }
-
-  /* Highlight projects block as main-dir */
-  .main-dir {
-    border-color: rgba(122, 98, 70, 0.4);
-    background: linear-gradient(135deg, #FFFDF9 0%, #FBF6EB 100%);
-  }
-
-  /* Connect Section (Warm Editorial Card) */
-  .connect-card {
-    background-color: #1F1E1B;
-    color: #FFF7E8;
-    border-radius: 24px;
-    padding: 3rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 25px 50px -25px rgba(0, 0, 0, 0.9);
-  }
-
-  .connect-card h3 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 2rem;
-    font-weight: 500;
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    line-height: 1.25;
-  }
-
-  @media (max-width: 480px) {
-    .connect-card h3 {
-      font-size: 1.65rem;
-    }
-  }
-
-  .connect-card p {
-    color: #E8C99A;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 2.25rem;
-    max-width: 550px;
-  }
-
-  .connect-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .status-indicator {
-    width: 6px;
-    height: 6px;
-    background-color: #B8895B;
-    border-radius: 9999px;
-    box-shadow: 0 0 8px #B8895B;
-  }
-
-  .connect-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.725rem;
-    color: #E8C99A;
-    letter-spacing: 0.05em;
-  }
-
-  .connect-actions {
-    display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
   }
 
-  .connect-actions .btn-primary {
-    background-color: #FFF7E8;
-    color: #1F1E1B;
+  .links a {
+    color: var(--text-color);
+    font: 500 0.83rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .connect-actions .btn-primary:hover {
-    background-color: transparent;
-    color: #FFF7E8;
-    border-color: #FFF7E8;
+  .links a:first-child {
+    border-color: var(--accent-color);
   }
 
-  .secondary-links {
-    display: flex;
-    gap: 1.25rem;
+  .links a:hover {
+    color: var(--accent-color);
+    transform: none;
+    border-color: var(--accent-color);
   }
 
-  .secondary-links a {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875rem;
-    color: #E8C99A;
-    text-decoration: none;
-    transition: color 0.25s var(--ease-expo);
+  .signal {
+    position: absolute;
+    right: clamp(-10rem, 3vw, 1rem);
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(285px, 41vw, 530px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    opacity: 0.58;
   }
 
-  .secondary-links a:hover {
-    color: #ffffff;
+  .ring {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(120, 220, 232, 0.18);
+    box-shadow: inset 0 0 70px rgba(120, 220, 232, 0.025);
   }
 
-  /* Cascading Scroll / Load Entrance Keyframes */
-  .capabilities-section {
-    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 0.2s;
+  .ring::after {
+    content: "";
+    position: absolute;
+    inset: 24%;
+    border-radius: 50%;
+    border: 1px solid rgba(120, 220, 232, 0.1);
   }
 
-  .stack-section {
-    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 0.35s;
+  .core {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    box-shadow: 0 0 25px var(--accent-color);
   }
 
-  .directory-section {
-    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 0.5s;
+  @keyframes pulse {
+    50% { opacity: 0.32; }
   }
 
-  .connect-section {
-    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 0.65s;
+  @media (max-width: 760px) {
+    .landing {
+      min-height: calc(100vh - 82px);
+      align-items: flex-start;
+    }
+
+    .status {
+      margin-bottom: 3.4rem;
+    }
+
+    .signal {
+      right: -190px;
+      bottom: -50px;
+      top: auto;
+      transform: none;
+      opacity: 0.28;
+    }
   }
 
-  @keyframes fade-in-up {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  @media (prefers-reduced-motion: reduce) {
+    .status span {
+      animation: none;
     }
   }
 </style>

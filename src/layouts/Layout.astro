@@ -3,13 +3,15 @@ import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
+  wide?: boolean;
+  dark?: boolean;
   frontmatter?: {
     title: string;
     date?: string;
   };
 }
 
-const { title, frontmatter } = Astro.props;
+const { title, wide = false, dark = false, frontmatter } = Astro.props;
 const pageTitle = frontmatter?.title || title || "Saki - Portfolio";
 const publishDate = frontmatter?.date;
 
@@ -57,6 +59,48 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         padding: 2rem 1.5rem;
+        transition:
+          background-color 0.68s var(--ease-expo),
+          color 0.52s var(--ease-expo);
+      }
+
+      body.dark {
+        --bg-color: #070B10;
+        --text-color: #E6EDF3;
+        --text-muted: #8B98A5;
+        --accent-color: #78DCE8;
+        --accent-hover: #8AA4FF;
+        --border-color: #1D2A36;
+        --card-bg: #0D141C;
+        --code-bg: #070B10;
+        --code-inline-bg: #121C26;
+      }
+
+      /* Ease the palette shift between the dark landing page and light reading pages. */
+      @keyframes page-blend-out {
+        to {
+          opacity: 0;
+          filter: blur(1.5px);
+        }
+      }
+
+      @keyframes page-blend-in {
+        from {
+          opacity: 0;
+          filter: blur(1.5px);
+        }
+        to {
+          opacity: 1;
+          filter: blur(0);
+        }
+      }
+
+      ::view-transition-old(root) {
+        animation: page-blend-out 0.42s var(--ease-expo) both;
+      }
+
+      ::view-transition-new(root) {
+        animation: page-blend-in 0.68s var(--ease-expo) both;
       }
 
       /* Premium Fade-In Page Transition */
@@ -80,6 +124,10 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
         max-width: 720px;
         margin: 0 auto;
         padding-bottom: 5rem;
+      }
+
+      .container.wide {
+        max-width: 1280px;
       }
 
       /* Navigation Header */
@@ -111,6 +159,10 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 
       nav a.active {
         border-color: var(--accent-color);
+      }
+
+      body.dark nav a.active {
+        color: var(--accent-color);
       }
 
       /* Premium Markdown Styling */
@@ -256,16 +308,29 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
         color: var(--text-muted);
         text-align: center;
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        body {
+          transition: none;
+        }
+
+        main,
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+          animation: none;
+        }
+      }
     </style>
   </head>
-  <body>
-    <div class="container">
+  <body class:list={{ dark }}>
+    <div class:list={['container', { wide }]}>
       <header>
         <nav>
           <a href={baseUrl} class="nav-home">Home</a>
           <a href={`${baseUrl}projects/`} class="nav-projects">Projects</a>
           <a href={`${baseUrl}blog/`} class="nav-blog">Blog</a>
-          <a href={`${baseUrl}contact/`} class="nav-contact">Contact</a>
+          <a href={`${baseUrl}about/`} class="nav-about">About Me</a>
+          <a href={`${baseUrl}contact/`} class="nav-contact">Contact Me</a>
         </nav>
       </header>
 
