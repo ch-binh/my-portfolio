@@ -1,0 +1,289 @@
+---
+import Layout from '../layouts/Layout.astro';
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
+---
+
+<Layout title="404 - Node Not Found">
+  <div class="error-container">
+    <!-- Spotlight Effect in the background -->
+    <div class="spotlight-bg"></div>
+
+    <div class="error-content-grid">
+      <!-- Left Column: Details -->
+      <div class="error-details">
+        <span class="system-status">SYSTEM STATUS</span>
+        <h1 class="error-title">
+          404 <span class="led-pulse">//</span> Node Not Found.
+        </h1>
+        <p class="error-message">
+          The requested path has been interrupted by a high-priority system nap.
+        </p>
+        <p class="error-submessage">
+          Our creative lead is currently offline for recharging.
+        </p>
+        <a href={baseUrl} class="return-btn">
+          Return to Main System
+        </a>
+      </div>
+
+      <!-- Right Column: Visual (Sleeping Cat) -->
+      <div class="error-visual">
+        <div class="image-wrapper">
+          <img 
+            src={`${baseUrl}sleeping_cat_404.png`} 
+            alt="Cute sleeping cat next to a laptop representing system nap" 
+            class="sleeping-cat-img"
+          />
+          <div class="image-glow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Base Container */
+  .error-container {
+    position: relative;
+    min-height: calc(100vh - 250px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 2rem 0;
+  }
+
+  /* Animated Breathing Spotlight Background */
+  .spotlight-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle,
+      rgba(56, 189, 248, 0.08) 0%,
+      rgba(56, 189, 248, 0.03) 40%,
+      rgba(11, 15, 25, 0) 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: spotlight-breath 6s infinite ease-in-out;
+  }
+
+  @keyframes spotlight-breath {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(0.95);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.15);
+      opacity: 1.2;
+    }
+  }
+
+  /* Content Grid */
+  .error-content-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .error-content-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 2rem;
+    }
+  }
+
+  /* Left Column Styling */
+  .error-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .error-details {
+      align-items: center;
+    }
+  }
+
+  .system-status {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .error-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.75rem;
+    font-weight: 500;
+    line-height: 1.15;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+    animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.1s;
+  }
+
+  @media (max-width: 480px) {
+    .error-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  /* Pulsing LED Double Slash effect */
+  .led-pulse {
+    color: var(--accent-color);
+    display: inline-block;
+    animation: led-heartbeat 3s infinite ease-in-out;
+  }
+
+  @keyframes led-heartbeat {
+    0%, 100% {
+      opacity: 0.3;
+      text-shadow: 0 0 2px rgba(56, 189, 248, 0);
+    }
+    50% {
+      opacity: 1.0;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.6), 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+  }
+
+  .error-message {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    max-width: 450px;
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.2s;
+  }
+
+  .error-submessage {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    max-width: 450px;
+    animation: fade-in-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.3s;
+  }
+
+  /* Premium Return Button */
+  .return-btn {
+    background-color: #ffffff;
+    color: #0b0f19;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-expo);
+    border: 1px solid transparent;
+    display: inline-block;
+    animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.4s;
+  }
+
+  .return-btn:hover {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -10px rgba(255, 255, 255, 0.35);
+  }
+
+  /* Right Column (Visual) Styling */
+  .error-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: scale-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.2s;
+  }
+
+  .image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.7);
+    max-width: 320px;
+    aspect-ratio: 4 / 3;
+    transition: border-color 0.3s var(--ease-expo), box-shadow 0.3s var(--ease-expo);
+  }
+
+  .image-wrapper:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 25px 50px -25px rgba(56, 189, 248, 0.2);
+  }
+
+  .sleeping-cat-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: cat-breath 6s infinite ease-in-out;
+  }
+
+  @keyframes cat-breath {
+    0%, 100% {
+      filter: brightness(0.9) contrast(1.02);
+      transform: scale(1.0);
+    }
+    50% {
+      filter: brightness(1.02) contrast(0.98);
+      transform: scale(1.03);
+    }
+  }
+
+  /* Soft Ambient Glow Overlay */
+  .image-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 60%,
+      rgba(245, 158, 11, 0.05) 0%,
+      rgba(11, 15, 25, 0) 80%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* General Cascading Animations */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+</style>
