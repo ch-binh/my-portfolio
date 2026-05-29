@@ -1,12 +1,12 @@
 ---
-title: "Design & Implementation of a High-Precision IoT Edge Gateway"
+title: "Graduation Thesis: BLE Sensor Gateway on Embedded Linux"
 layout: ../../layouts/Layout.astro
 ---
 
-# 🎓 Graduation Thesis: Design & Implementation of a High-Precision IoT Edge Gateway
+# 🎓 Graduation Thesis: BLE Sensor Gateway on Embedded Linux
 
-## Executive Summary
-This thesis presents the design, system architecture, and hardware-software co-design of a **High-Precision IoT Edge Gateway** running Embedded Linux. The gateway acts as a robust local data aggregator and secure edge processing hub, interfacing with low-power wireless sensor nodes (BLE Mesh) and streaming parsed media/sensor packages to a centralized cloud platform.
+## Overview
+This thesis covers the design of a BLE sensor gateway running Embedded Linux. The gateway collects data from BLE sensor nodes, caches it in a local SQLite database, and forwards it to a cloud backend over TLS.
 
 ---
 
@@ -30,7 +30,7 @@ graph LR
 
 The gateway consists of three distinct software layers running on an ARM Cortex-A processor:
 1. **Wireless Aggregator Layer (C/C++)**: A low-level service managing the Bluetooth Low Energy (BLE) transceiver and handling raw packet parsing.
-2. **Local Edge Service (Go)**: A high-stability concurrent service managing thread pools, local SQLite caching databases, and data serialization.
+2. **Local Edge Service (Go)**: A concurrent service managing thread pools, local SQLite caching databases, and data serialization.
 3. **Cloud Streamer Layer (Go / gRPC)**: An encrypted socket-based client that streams data packets to the cloud backend with auto-reconnection and buffering mechanisms.
 
 ---
@@ -38,7 +38,7 @@ The gateway consists of three distinct software layers running on an ARM Cortex-
 ## ⚙️ Key Technical Implementations
 
 ### Custom Yocto-based Linux OS
-To guarantee high stability, minimal security exposure, and fast boot times, a customized Embedded Linux image was generated using the **Yocto Project (Scarthgap release)**:
+To keep the image small and reduce attack surface, a customized Embedded Linux image was generated using the **Yocto Project (Scarthgap release)**:
 - Stripped unnecessary system packages, achieving a root filesystem size of under **80MB**.
 - Configured custom device trees (DTS) to define serial communication ports and custom GPIO controls.
 - Hardened kernel security options and disabled root login.
@@ -50,6 +50,6 @@ Implemented the edge daemon using **Golang** to exploit its lightweight concurre
 
 ---
 
-## 🔍 Results & Achievements
+## 🔍 Results
 - Achieved continuous, stable data logging over **100+ hours** of tests with **0% packet loss** under simulated network disruptions (thanks to the local SQLite buffer).
 - Optimized power consumption on the gateway by implementing dynamic CPU frequency scaling (via scaling governors in Linux) and configuring automatic power suspend for unused peripheral interfaces.

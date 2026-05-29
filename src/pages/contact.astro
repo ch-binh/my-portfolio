@@ -8,8 +8,8 @@ import Layout from '../layouts/Layout.astro';
       <p class="label">Contact</p>
       <h1>Contact Me</h1>
       <p>
-        Have a firmware question, a hardware problem to investigate, or an idea worth
-        discussing? Send me a message and I will get back to you.
+        I use this site to document embedded firmware projects and debugging notes.
+        Feel free to reach out if you want to discuss firmware, RTOS, sensors, or low-level debugging.
       </p>
     </header>
 
@@ -80,7 +80,7 @@ import Layout from '../layouts/Layout.astro';
 
   .contact-page section {
     margin: 0;
-    background: #fffdf9;
+    background: var(--card-bg);
     border-color: var(--border-color);
   }
 
@@ -89,7 +89,7 @@ import Layout from '../layouts/Layout.astro';
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    background: linear-gradient(145deg, #fffdf9 0%, #fbf4e7 100%) !important;
+    background: var(--card-bg) !important;
     padding: 2rem !important;
   }
 
@@ -110,7 +110,7 @@ import Layout from '../layouts/Layout.astro';
 
   .email-button {
     flex-shrink: 0;
-    color: #fffdf9;
+    color: var(--bg-color, #070B10);
     background: var(--accent-color);
     padding: 0.8rem 1.15rem;
     border-radius: 8px;
@@ -118,7 +118,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .email-button:hover {
-    color: #fffdf9;
+    color: var(--bg-color, #070B10);
     background: var(--accent-hover);
   }
 
@@ -132,7 +132,7 @@ import Layout from '../layouts/Layout.astro';
     justify-content: space-between;
     gap: 1.5rem;
     padding: 2rem !important;
-    background: linear-gradient(145deg, #fffdf9 0%, #fbf4e7 100%) !important;
+    background: var(--card-bg) !important;
   }
 
   .profiles h2 {
@@ -162,9 +162,9 @@ import Layout from '../layouts/Layout.astro';
   .topic-grid p {
     padding: 1.1rem;
     margin: 0;
-    border: 1px solid rgba(122, 98, 70, 0.16);
+    border: 1px solid var(--border-color);
     border-radius: 9px;
-    background: #fbf4e7;
+    background: var(--code-inline-bg);
   }
 
   .topic-grid strong {

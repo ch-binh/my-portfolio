@@ -5,8 +5,8 @@ layout: ../../layouts/Layout.astro
 
 # 🎙️ PDM Microphone to PCM Audio on Nordic nRF52
 
-## Executive Summary
-This project showcases the capture, processing, and double-buffering of digital microphone data on a **Nordic nRF52** microcontroller. By leveraging the nRF52's built-in **PDM (Pulse Density Modulation)** hardware peripheral and **EasyDMA**, the system converts 1-bit high-frequency bitstreams into high-fidelity 16-bit multi-bit **PCM (Pulse Code Modulation)** audio buffers, achieving seamless data processing with zero CPU overhead during capture.
+## Overview
+This project documents the capture, processing, and double-buffering of digital microphone data on a **Nordic nRF52** microcontroller. Using the nRF52's built-in **PDM (Pulse Density Modulation)** hardware peripheral and **EasyDMA**, the system converts 1-bit high-frequency bitstreams into 16-bit **PCM (Pulse Code Modulation)** audio buffers. DMA handles the transfer so the CPU stays free during capture.
 
 ---
 
@@ -61,7 +61,7 @@ void pdm_event_handler(nrfx_pdm_evt_t const * p_event) {
 
 ---
 
-## 🔍 Technical Performance & Trade-offs
-- **DMA Offloading**: Offloaded PDM clocking and data collection entirely to **EasyDMA**, keeping CPU utilization under **5%** during continuous recording at 16kHz.
+## 🔍 Results & Trade-offs
+- **DMA Offloading**: PDM clocking and data collection run on **EasyDMA**, keeping CPU utilization under **5%** during continuous recording at 16kHz.
 - **PCM Configuration**: Configured the hardware decimation filter for a **16kHz sample rate, 16-bit mono PCM format** (oversampling ratio of 64).
-- **Double-Buffer Timing**: Implemented a ping-pong buffer architecture to handle buffer-release and buffer-request events within the `nrfx_pdm` ISR, ensuring zero data loss and jitter-free queue submission.
+- **Double-Buffer Timing**: Implemented a ping-pong buffer architecture to handle buffer-release and buffer-request events within the `nrfx_pdm` ISR, to avoid dropping samples between buffer swaps.

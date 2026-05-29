@@ -8,24 +8,101 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 <Layout title="Binh Pham - Embedded Firmware Engineer" wide dark>
   <section class="landing">
     <div class="copy">
-      <p class="status"><span></span> Embedded systems / signal online</p>
+      <p class="status"><span></span> STM32 · nRF52 · FreeRTOS</p>
       <p class="role">Firmware engineer</p>
       <h1>
         <span class="greeting">Hi, I'm</span>
         <span class="signature">Binh Pham</span>
       </h1>
       <p class="intro">
-        I build reliable embedded firmware for real-time systems, sensors, storage, and digital audio.
+        Embedded firmware engineer documenting low-level debugging, RTOS behavior, peripheral drivers, and hardware/software integration.
       </p>
       <div class="links">
-        <a href={`${baseUrl}projects/`}>View projects</a>
-        <a href={`${baseUrl}contact/`}>Contact</a>
+        <a href={`${baseUrl}projects/`}>Projects</a>
+        <a href={`${baseUrl}blog/`}>Notes</a>
+        <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </div>
 
     <div class="signal" aria-hidden="true">
       <div class="ring"></div>
       <div class="core"></div>
+    </div>
+  </section>
+
+  <!-- What I Document Here -->
+  <section class="doc-section">
+    <h2 class="section-title">What I Document Here</h2>
+    <div class="card-grid">
+      <div class="doc-card">
+        <span class="card-icon">🔍</span>
+        <h3>Low-level Debugging</h3>
+        <p>HardFaults, DMA issues, interrupt priority conflicts, cache coherence — the bugs that don't show up in tutorials.</p>
+      </div>
+      <div class="doc-card">
+        <span class="card-icon">⏱️</span>
+        <h3>RTOS & Scheduling</h3>
+        <p>Task priorities, semaphore usage, context-switch behavior in FreeRTOS and Zephyr on real hardware.</p>
+      </div>
+      <div class="doc-card">
+        <span class="card-icon">🔌</span>
+        <h3>Peripheral Drivers</h3>
+        <p>SPI, I2C, UART, SDMMC, PDM — writing and debugging drivers on STM32 and Nordic chips.</p>
+      </div>
+      <div class="doc-card">
+        <span class="card-icon">🎛️</span>
+        <h3>Audio & Sensor Work</h3>
+        <p>PDM microphone capture, loadcell filtering, ADC noise reduction — signal processing on constrained MCUs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Projects -->
+  <section class="doc-section">
+    <h2 class="section-title">Recent Projects</h2>
+    <div class="project-list">
+      <a href={`${baseUrl}projects/stm32-sdmmc-dma-debugging/`} class="project-item">
+        <div class="project-meta">
+          <span class="tag">STM32L4</span>
+          <span class="tag">FreeRTOS</span>
+          <span class="tag">DMA</span>
+        </div>
+        <h3>STM32 SDMMC + DMA Debugging</h3>
+        <p>Debugging SD card write failures: NVIC priority inversion, D-Cache coherence, DMA FIFO underrun.</p>
+      </a>
+      <a href={`${baseUrl}projects/pdm-microphone-pcm-audio/`} class="project-item">
+        <div class="project-meta">
+          <span class="tag">nRF52</span>
+          <span class="tag">PDM</span>
+          <span class="tag">EasyDMA</span>
+        </div>
+        <h3>PDM Microphone to PCM Audio</h3>
+        <p>Capture audio from PDM mic on nRF52, convert to 16-bit PCM with hardware decimation and double-buffering.</p>
+      </a>
+      <a href={`${baseUrl}projects/loadcell-weight-system/`} class="project-item">
+        <div class="project-meta">
+          <span class="tag">STM32</span>
+          <span class="tag">HX711</span>
+          <span class="tag">Kalman</span>
+        </div>
+        <h3>Loadcell Weight Measurement</h3>
+        <p>Weight measurement with HX711 ADC. Kalman filter + moving average to reduce vibration noise.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Latest Notes -->
+  <section class="doc-section">
+    <h2 class="section-title">Latest Notes</h2>
+    <div class="notes-list">
+      <a href={`${baseUrl}blog/calibrating-loadcells/`} class="note-item">
+        <h3>Calibrating Loadcells: Digital Noise Filtering in Embedded C</h3>
+        <p>Tare calibration, moving average, and 1D Kalman filter implementation on Cortex-M for stable weight readings.</p>
+      </a>
+      <a href={`${baseUrl}blog/pdm-vs-pcm/`} class="note-item">
+        <h3>PDM vs PCM in Embedded Audio</h3>
+        <p>Quick reference on what PDM and PCM are, and how they relate in embedded audio capture.</p>
+      </a>
     </div>
   </section>
 </Layout>
@@ -133,7 +210,7 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
   }
 
   .intro {
-    max-width: 490px;
+    max-width: 520px;
     color: var(--text-muted);
     font-size: clamp(1rem, 1.4vw, 1.08rem);
     line-height: 1.72;
@@ -206,6 +283,164 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
     50% { opacity: 0.32; }
   }
 
+  /* === Below-the-fold sections === */
+
+  .doc-section {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 4rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid rgba(139, 152, 165, 0.1);
+  }
+
+  .doc-section:hover {
+    transform: none;
+    border-color: rgba(139, 152, 165, 0.1);
+    box-shadow: none;
+  }
+
+  .section-title {
+    font: 500 0.72rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin: 0 0 2rem;
+    border: none;
+    padding: 0;
+  }
+
+  /* Card Grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .doc-card {
+    padding: 1.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--card-bg);
+    transition: border-color 0.3s ease;
+  }
+
+  .doc-card:hover {
+    border-color: var(--accent-color);
+  }
+
+  .card-icon {
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+
+  .doc-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-color);
+  }
+
+  .doc-card p {
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Project List */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .project-item {
+    display: block;
+    padding: 1.3rem 1.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .project-item:hover {
+    border-color: var(--accent-color);
+    color: var(--text-color);
+    transform: translateY(-2px);
+  }
+
+  .project-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font: 400 0.65rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(120, 220, 232, 0.08);
+    color: var(--accent-color);
+    border: 1px solid rgba(120, 220, 232, 0.15);
+  }
+
+  .project-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+    color: var(--text-color);
+  }
+
+  .project-item p {
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Notes List */
+  .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .note-item {
+    display: block;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+  }
+
+  .note-item:hover {
+    border-color: var(--accent-color);
+    color: var(--text-color);
+    transform: none;
+  }
+
+  .note-item h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.35rem;
+    color: var(--text-color);
+  }
+
+  .note-item p {
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
   @media (max-width: 760px) {
     .landing {
       min-height: calc(100vh - 82px);
@@ -222,6 +457,14 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
       top: auto;
       transform: none;
       opacity: 0.28;
+    }
+
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .doc-section {
+      padding: 3rem 0.5rem;
     }
   }
 

@@ -5,8 +5,8 @@ layout: ../../layouts/Layout.astro
 
 # 💾 STM32 SDMMC + DMA Debugging
 
-## Executive Summary
-This engineering journal logs the debugging process of resolving critical write failures, interrupt preemption priorities, and memory coherence issues on an **STM32L4** microcontroller. The system was designed to write sensor data streams to an SD card via the **SDMMC** hardware peripheral using **Direct Memory Access (DMA)** in a multi-threaded FreeRTOS environment.
+## Background
+Notes from debugging write failures, interrupt preemption priorities, and memory coherence issues on an **STM32L4** microcontroller. The system was designed to write sensor data streams to an SD card via the **SDMMC** hardware peripheral using **Direct Memory Access (DMA)** in a multi-threaded FreeRTOS environment.
 
 ---
 
@@ -54,8 +54,8 @@ void write_buffer_to_sd(uint32_t* buffer, uint32_t block_address, uint32_t numbe
 
 ---
 
-## 🔍 Debugging Outcomes & Technical Gains
-- **Root Cause Resolution**: Eliminated kernel stack corruption and random context-switch HardFaults by aligning NVIC preemption priorities relative to the FreeRTOS syscall threshold.
-- **Data Coherence**: Resolved buffer corruption by inserting cache-flushing APIs (`SCB_CleanDCache_by_Addr`) to synchronize physical SRAM with the Cortex-M7 D-Cache before DMA start.
-- **Bus Optimization**: Leveraged a 4-bit wide SDMMC hardware bus configuration and DMA multi-block modes to maintain reliable sensor data logging.
+## 🔍 What I Fixed
+- **Root Cause Resolution**: Fixed HardFaults by aligning NVIC preemption priorities relative to the FreeRTOS syscall threshold.
+- **Data Coherence**: Fixed data corruption by flushing D-Cache before DMA start.
+- **Bus Optimization**: Used 4-bit SDMMC bus and DMA multi-block modes to maintain reliable sensor data logging.
 - **Power Failsafe**: Implemented a software state machine to monitor power rails and flush/close FATFS file descriptors immediately upon detecting low-voltage interrupts (VDD droop).

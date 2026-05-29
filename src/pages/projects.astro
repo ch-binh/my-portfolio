@@ -5,47 +5,164 @@ const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
-<Layout title="Projects - Binh Pham Portfolio">
+<Layout title="Projects - Binh Pham">
   <h1>Projects</h1>
-  <p>A compiled portfolio of my graduation research, hardware engineering, and low-level firmware projects. Click on any project to explore its full technical documentation, schematics, and C/C++ code implementations:</p>
+  <p>Projects and experiments I've worked on. Each page has notes on what I built, what went wrong, and what I learned.</p>
 
-  <section style="margin-bottom: 3rem;">
-    <h2>🎓 Graduation Thesis: Design & Implementation of a High-Precision IoT Edge Gateway</h2>
+  <section class="project-card">
+    <div class="card-header">
+      <h2>🎓 Graduation Thesis: BLE Sensor Gateway on Embedded Linux</h2>
+      <div class="card-meta">
+        <span class="status-tag done">Done</span>
+        <span class="platform-tag">Embedded Linux · Yocto</span>
+      </div>
+    </div>
     <p>
-      Developed an intelligent, low-power IoT Edge Gateway running **Embedded Linux (Yocto)** to aggregate, process, and securely stream sensor data from low-power nodes to a cloud backend via concurrent Go services.
+      Collect sensor data from BLE nodes, cache locally in SQLite, forward to cloud over TLS. Built on a custom Yocto Linux image with concurrent Go services.
     </p>
-    <p>
-      <a href={`${baseUrl}projects/graduation-thesis/`} style="font-weight: 600;">Read Full Thesis Details & Architecture →</a>
-    </p>
+    <div class="card-topics">
+      <span>BLE</span>
+      <span>Yocto</span>
+      <span>Golang</span>
+      <span>SQLite</span>
+      <span>TLS</span>
+    </div>
+    <a href={`${baseUrl}projects/graduation-thesis/`} class="read-link">Read project notes →</a>
   </section>
 
-  <section style="margin-bottom: 3rem;">
-    <h2>⚖️ High-Precision Mass Measurement System (Loadcell & HX711)</h2>
+  <section class="project-card">
+    <div class="card-header">
+      <h2>⚖️ Loadcell Weight Measurement (HX711 + STM32)</h2>
+      <div class="card-meta">
+        <span class="status-tag done">Done</span>
+        <span class="platform-tag">STM32 Cortex-M</span>
+      </div>
+    </div>
     <p>
-      Designed a noise-resilient electronic weight measurement node utilizing a 24-bit HX711 ADC and loadcell sensors, featuring real-time C-based Kalman and Moving Average filters to eliminate physical vibration noise.
+      Weight measurement using HX711 24-bit ADC and strain gauge loadcell. Kalman filter + moving average to reduce vibration noise.
     </p>
-    <p>
-      <a href={`${baseUrl}projects/loadcell-weight-system/`} style="font-weight: 600;">Read Full Project Details & C Code →</a>
-    </p>
+    <div class="card-topics">
+      <span>HX711</span>
+      <span>ADC</span>
+      <span>Kalman Filter</span>
+      <span>Calibration</span>
+    </div>
+    <a href={`${baseUrl}projects/loadcell-weight-system/`} class="read-link">Read project notes →</a>
   </section>
 
-  <section style="margin-bottom: 3rem;">
-    <h2>🎙️ PDM Microphone to PCM Audio on Nordic nRF52</h2>
+  <section class="project-card">
+    <div class="card-header">
+      <h2>🎙️ PDM Microphone to PCM Audio on Nordic nRF52</h2>
+      <div class="card-meta">
+        <span class="status-tag done">Done</span>
+        <span class="platform-tag">nRF52</span>
+      </div>
+    </div>
     <p>
-      Captured high-fidelity digital microphone data using the Nordic nRF52 PDM peripheral and converted/filtered it into ready-to-use PCM audio buffers via low-latency EasyDMA double-buffering.
+      Capture audio from a PDM microphone on nRF52, convert to 16-bit PCM using hardware decimation and EasyDMA double-buffering.
     </p>
-    <p>
-      <a href={`${baseUrl}projects/pdm-microphone-pcm-audio/`} style="font-weight: 600;">Read Full Project Details & DMA Logic →</a>
-    </p>
+    <div class="card-topics">
+      <span>PDM</span>
+      <span>PCM</span>
+      <span>EasyDMA</span>
+      <span>Double Buffering</span>
+    </div>
+    <a href={`${baseUrl}projects/pdm-microphone-pcm-audio/`} class="read-link">Read project notes →</a>
   </section>
 
-  <section style="margin-bottom: 3rem;">
-    <h2>💾 STM32 SDMMC + DMA Debugging</h2>
+  <section class="project-card">
+    <div class="card-header">
+      <h2>💾 STM32 SDMMC + DMA Debugging</h2>
+      <div class="card-meta">
+        <span class="status-tag notes">Notes</span>
+        <span class="platform-tag">STM32L4 · FreeRTOS</span>
+      </div>
+    </div>
     <p>
-      Diagnosed and resolved critical race conditions, interrupt preemption priorities, and D-Cache memory coherence issues on STM32 microcontroller DMA transfers to SD cards via SDMMC protocol.
+      Debugging SD card write failures on STM32L4: NVIC priority inversion, D-Cache coherence, DMA FIFO underrun.
     </p>
-    <p>
-      <a href={`${baseUrl}projects/stm32-sdmmc-dma-debugging/`} style="font-weight: 600;">Read Full Debugging Journal & NVIC Details →</a>
-    </p>
+    <div class="card-topics">
+      <span>SDMMC</span>
+      <span>DMA</span>
+      <span>D-Cache</span>
+      <span>NVIC</span>
+      <span>FreeRTOS</span>
+    </div>
+    <a href={`${baseUrl}projects/stm32-sdmmc-dma-debugging/`} class="read-link">Read debugging notes →</a>
   </section>
 </Layout>
+
+<style>
+  .project-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-header {
+    margin-bottom: 0.8rem;
+  }
+
+  .card-header h2 {
+    margin: 0 0 0.6rem;
+    font-size: 1.25rem;
+    border: none;
+    padding: 0;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .status-tag {
+    font: 500 0.68rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+    padding: 0.18rem 0.55rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .status-tag.done {
+    background: rgba(76, 175, 80, 0.12);
+    color: #66bb6a;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+  }
+
+  .status-tag.notes {
+    background: rgba(120, 220, 232, 0.1);
+    color: var(--accent-color, #78dce8);
+    border: 1px solid rgba(120, 220, 232, 0.2);
+  }
+
+  .status-tag.wip {
+    background: rgba(255, 183, 77, 0.12);
+    color: #ffb74d;
+    border: 1px solid rgba(255, 183, 77, 0.2);
+  }
+
+  .platform-tag {
+    font: 400 0.72rem 'JetBrains Mono', monospace;
+    color: var(--text-muted);
+  }
+
+  .card-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-topics span {
+    font: 400 0.67rem 'JetBrains Mono', monospace;
+    padding: 0.17rem 0.48rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+  }
+
+  .read-link {
+    font: 500 0.85rem 'Inter', sans-serif;
+    font-weight: 600;
+  }
+</style>

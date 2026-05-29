@@ -8,7 +8,7 @@ layout: ../../layouts/Layout.astro
 
 When building mass measurement systems using loadcells and analog-to-digital converters (like the 24-bit HX711), the raw sensor data is rarely stable enough to be used directly. Physical vibrations, temperature drifts, and electromagnetic interference create raw noise that must be filtered in software.
 
-In this log, I'll walk through how I designed a calibration process and implemented digital filters in C to achieve high-precision mass readings.
+In this log, I'll walk through how I designed a calibration process and implemented digital filters in C to achieve stable weight readings.
 
 ---
 
@@ -73,7 +73,7 @@ int32_t apply_moving_average(int32_t new_sample) {
 
 ### B. One-Dimensional Kalman Filter
 
-For industrial scales where sudden weight shocks occur alongside persistent micro-vibrations, a 1D Kalman filter provides optimal estimation by dynamically balancing the measurement variance against the process variance.
+For scales that need to stay stable under vibration, a 1D Kalman filter gives a reasonable estimate by balancing process noise against measurement noise.
 
 ```c
 typedef struct {
@@ -108,4 +108,4 @@ float kalman_update(kalman_state_t* state, float measurement) {
 
 ## Summary
 
-Integrating zero-point tare calibration with a real-time 1D Kalman filter on a Cortex-M MCU significantly reduces high-frequency mechanical vibration noise. This double-stage filtering approach (SMA for base smoothing, Kalman for transient response) provides a stable weight display under ambient disturbances while maintaining low computational overhead.
+Integrating zero-point tare calibration with a real-time 1D Kalman filter on a Cortex-M MCU helps reduce mechanical vibration noise. This double-stage filtering approach (SMA for base smoothing, Kalman for transient response) provides a stable weight display under ambient disturbances while maintaining low computational overhead.

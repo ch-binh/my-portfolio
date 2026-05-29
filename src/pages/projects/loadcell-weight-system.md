@@ -1,12 +1,11 @@
 ---
-title: "High-Precision Mass Measurement System (Loadcell & HX711)"
+title: "Loadcell Weight Measurement (HX711 + STM32)"
 layout: ../../layouts/Layout.astro
 ---
 
-# ⚖️ High-Precision Mass Measurement System (Loadcell & HX711)
+# ⚖️ Loadcell Weight Measurement (HX711 + STM32)
 
-## Executive Summary
-This project outlines the development of a highly precise and vibration-resistant electronic mass measurement system using a **4-wire strain gauge loadcell** and the **24-bit HX711 ADC**. The core contribution is the design and implementation of real-time digital filtering algorithms in C to eliminate ambient mechanical vibrations and physical disturbances in industrial environments.
+This project documents a weight measurement system using a **4-wire strain gauge loadcell** and the **24-bit HX711 ADC**. The main focus was implementing real-time digital filtering in C to reduce noise from mechanical vibration.
 
 ---
 
@@ -62,7 +61,7 @@ float apply_kalman_filter(kalman_state_t* state, float raw_weight) {
 
 ---
 
-## 🔍 Achievements & Performance
-- **Digital Filtering**: Improved display stability under ambient mechanical vibration by implementing a combined Moving Average (base smoothing) and 1D Kalman filtering pipeline in C.
+## 🔍 Results
+- **Digital Filtering**: Improved display stability under vibration using a combined moving average and 1D Kalman filtering pipeline.
 - **Low-Power Design**: Configured low-power standby modes on both the HX711 and STM32, reducing inactive current draw during idle intervals.
-- **Response Trade-Off**: Optimized the Kalman filter coefficients ($Q$ process noise and $R$ measurement noise) to minimize response latency during weight changes while maintaining a stable, jitter-free static display.
+- **Response Trade-Off**: Tuned Kalman filter coefficients ($Q$ process noise and $R$ measurement noise) to minimize response latency during weight changes while maintaining a stable, jitter-free static display.
