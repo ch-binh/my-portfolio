@@ -65,3 +65,7 @@ void pdm_event_handler(nrfx_pdm_evt_t const * p_event) {
 - **DMA Offloading**: PDM clocking and data collection run on **EasyDMA**, keeping CPU utilization under **5%** during continuous recording at 16kHz.
 - **PCM Configuration**: Configured the hardware decimation filter for a **16kHz sample rate, 16-bit mono PCM format** (oversampling ratio of 64).
 - **Double-Buffer Timing**: Implemented a ping-pong buffer architecture to handle buffer-release and buffer-request events within the `nrfx_pdm` ISR, to avoid dropping samples between buffer swaps.
+
+## References
+
+- [PDM vs PCM in Embedded Audio](../../blog/pdm-vs-pcm/) - related note explaining the audio formats used in this project.

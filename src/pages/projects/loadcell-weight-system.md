@@ -65,3 +65,7 @@ float apply_kalman_filter(kalman_state_t* state, float raw_weight) {
 - **Digital Filtering**: Improved display stability under vibration using a combined moving average and 1D Kalman filtering pipeline.
 - **Low-Power Design**: Configured low-power standby modes on both the HX711 and STM32, reducing inactive current draw during idle intervals.
 - **Response Trade-Off**: Tuned Kalman filter coefficients ($Q$ process noise and $R$ measurement noise) to minimize response latency during weight changes while maintaining a stable, jitter-free static display.
+
+## References
+
+- [Calibrating Loadcells: Digital Noise Filtering in Embedded C](../../blog/calibrating-loadcells/) - related note on tare calibration, moving average filtering, and 1D Kalman filtering.

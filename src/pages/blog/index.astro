@@ -9,6 +9,18 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
   <p>Debugging notes, implementation logs, and things I learned while writing firmware.</p>
 
   <section class="note-entry">
+    <a href={`${baseUrl}blog/self-balancing-electric-motorcycle-paper/`}>
+      <h2>Study and Implementation of Self-Balancing Electric Motorcycle</h2>
+    </a>
+    <p class="note-desc">A compact research note on the reaction-wheel model, Kalman-filtered MPU6050 angle estimate, PID/LQR comparison, and physical prototype validation.</p>
+    <div class="note-tags">
+      <span>Control</span>
+      <span>LQR</span>
+      <span>IMU</span>
+    </div>
+  </section>
+
+  <section class="note-entry">
     <a href={`${baseUrl}blog/calibrating-loadcells/`}>
       <h2>Calibrating Loadcells: Digital Noise Filtering in Embedded C</h2>
     </a>

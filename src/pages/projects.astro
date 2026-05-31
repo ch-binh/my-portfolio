@@ -11,21 +11,21 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 
   <section class="project-card">
     <div class="card-header">
-      <h2>🎓 Graduation Thesis: BLE Sensor Gateway on Embedded Linux</h2>
+      <h2>🎓 Graduation Thesis: Self-Balancing Electric Motorcycle</h2>
       <div class="card-meta">
         <span class="status-tag done">Done</span>
-        <span class="platform-tag">Embedded Linux · Yocto</span>
+        <span class="platform-tag">Control Systems · Embedded Sensing</span>
       </div>
     </div>
     <p>
-      Collect sensor data from BLE nodes, cache locally in SQLite, forward to cloud over TLS. Built on a custom Yocto Linux image with concurrent Go services.
+      Small-scale reaction-wheel motorcycle prototype. The thesis compares PID and LQR balancing control, filters MPU6050 angle data, validates the prototype under disturbance, and extends it with camera-based line tracking.
     </p>
     <div class="card-topics">
-      <span>BLE</span>
-      <span>Yocto</span>
-      <span>Golang</span>
-      <span>SQLite</span>
-      <span>TLS</span>
+      <span>LQR</span>
+      <span>PID</span>
+      <span>MPU6050</span>
+      <span>Kalman</span>
+      <span>Computer Vision</span>
     </div>
     <a href={`${baseUrl}projects/graduation-thesis/`} class="read-link">Read project notes →</a>
   </section>

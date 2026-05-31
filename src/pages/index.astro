@@ -61,6 +61,15 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
   <section class="doc-section">
     <h2 class="section-title">Recent Projects</h2>
     <div class="project-list">
+      <a href={`${baseUrl}projects/graduation-thesis/`} class="project-item">
+        <div class="project-meta">
+          <span class="tag">LQR</span>
+          <span class="tag">MPU6050</span>
+          <span class="tag">Kalman</span>
+        </div>
+        <h3>Self-Balancing Electric Motorcycle</h3>
+        <p>Graduation thesis prototype using a reaction wheel, filtered MPU6050 angle sensing, LQR balancing control, and camera-based line tracking.</p>
+      </a>
       <a href={`${baseUrl}projects/stm32-sdmmc-dma-debugging/`} class="project-item">
         <div class="project-meta">
           <span class="tag">STM32L4</span>
@@ -95,6 +104,10 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
   <section class="doc-section">
     <h2 class="section-title">Latest Notes</h2>
     <div class="notes-list">
+      <a href={`${baseUrl}blog/self-balancing-electric-motorcycle-paper/`} class="note-item">
+        <h3>Study and Implementation of Self-Balancing Electric Motorcycle</h3>
+        <p>Research-paper note on the model, sensor filtering, PID/LQR comparison, and prototype validation.</p>
+      </a>
       <a href={`${baseUrl}blog/calibrating-loadcells/`} class="note-item">
         <h3>Calibrating Loadcells: Digital Noise Filtering in Embedded C</h3>
         <p>Tare calibration, moving average, and 1D Kalman filter implementation on Cortex-M for stable weight readings.</p>
