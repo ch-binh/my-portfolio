@@ -77,6 +77,12 @@ use the same catalog in `src/data/blogs.ts`. Run
 `node --test scripts/verify-aliasing.test.mjs scripts/verify-blogs.test.mjs`
 after building to check media, navigation, archive entries and legacy routes.
 
+Blog cards display an article's existing `date` frontmatter and a prose-only
+reading-time estimate (200 words/minute). An explicitly confirmed `createdAt`
+in the catalog can supply the date for an Astro article. Unknown dates remain
+hidden; file modification times and Git commit dates are not substituted.
+The estimate excludes code, audio/video playback and collapsed analysis.
+
 Only three WAVs, six plots and public-safe measurements enter this repository.
 Notebook code and private source paths do not. The build rejects changed media.
 The separate experiment repository is public:

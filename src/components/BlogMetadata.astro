@@ -1,0 +1,32 @@
+---
+import { formatCreationDate } from '../lib/blog-metadata.mjs';
+
+interface Props {
+  createdAt: string | null;
+  readingMinutes: number;
+}
+const { createdAt, readingMinutes } = Astro.props;
+---
+
+<div class="blog-metadata">
+  {createdAt && (
+    <>
+      <time datetime={createdAt} title="Article creation date">{formatCreationDate(createdAt)}</time>
+      <span aria-hidden="true">·</span>
+    </>
+  )}
+  <span title="Estimated prose reading time, excluding code and media playback">{readingMinutes} min read</span>
+</div>
+
+<style>
+  .blog-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0 0 0.7rem;
+    color: var(--text-muted);
+    font: 400 0.72rem 'JetBrains Mono', monospace;
+    line-height: 1.6;
+  }
+</style>

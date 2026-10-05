@@ -1,8 +1,11 @@
-// One catalog for the archive and the home-page highlights. Detail URLs stay stable.
-export const blogs = [
+import { readBlogMetadata } from '../lib/blog-metadata.mjs';
+
+// Dates come from article frontmatter, never file modification times or today's date.
+const catalog = [
   {
     title: 'Aliasing Phenomenon in Audio Downsampling',
     path: 'blog/dropping-audio-samples-aliasing/',
+    createdAt: '2026-10-05', // Confirmed creation date of this article, not of the DSP topic.
     description: 'Hear how skipping PCM samples can create a false tone, and compare it with filtering before downsampling.',
     tags: ['Audio', 'DSP', 'Firmware'],
   },
@@ -49,3 +52,5 @@ export const blogs = [
     tags: ['SDMMC', 'DMA', 'NVIC', 'FreeRTOS'],
   },
 ];
+
+export const blogs = catalog.map(blog => ({ ...blog, ...readBlogMetadata(blog) }));
