@@ -1,0 +1,52 @@
+{
+  "experiment": "01_pcm_aliasing_walkthrough",
+  "verified": true,
+  "inputRateHz": 64000,
+  "outputRateHz": 32000,
+  "durationSeconds": 4,
+  "tonesHz": [
+    3000,
+    10000,
+    31000
+  ],
+  "aliasReductionDb": 69.34193707454395,
+  "notebookCodeSha256": "bc6f81d2a6540193b8c84a5ad7bae1848a603b1e3dfe82559a91d2b107c4e309",
+  "repositoryUrl": "https://github.com/ch-binh/SIM-Aliasing-in-audio-down-sampling",
+  "imageDimensions": {
+    "original-waveform.png": [
+      1746,
+      626
+    ],
+    "unfiltered-waveform.png": [
+      1746,
+      626
+    ],
+    "filtered-waveform.png": [
+      1746,
+      626
+    ],
+    "original-fft.png": [
+      1726,
+      627
+    ],
+    "unfiltered-fft.png": [
+      1726,
+      627
+    ],
+    "filtered-fft.png": [
+      1726,
+      627
+    ]
+  },
+  "artifactSha256": {
+    "original-64khz.wav": "8d1298ebec577590a9db050fff48b7effcaffd2dbb66b3ebfd2062801d12b1fb",
+    "unfiltered-32khz.wav": "1751679a72649f19ea195215cd771be1871bb58613f36edf1da7d3b59f295805",
+    "filtered-32khz.wav": "0fb9cd50b15777594207883799eb9cc43a078be4e360ff814b25c11d470450ea",
+    "original-waveform.png": "b1e954b3da984541551ad0ca8493871cce07e8151c0631fa4deaccf41e3e9732",
+    "unfiltered-waveform.png": "2c528b4123707cab1219b1e5dc1836e55c26461aa9fb1ee0c31be34e2ebd3c26",
+    "filtered-waveform.png": "3c36db6307de4cc32475602d97163472e57ffe748a5761d9b2c3ea8af83e2491",
+    "original-fft.png": "e06b839e551a659a33d82aefb0be8799cd39dd6eefe57020627c943143ef6585",
+    "unfiltered-fft.png": "1565505ea3a32ba465bea5ed046389e8dac79c3adab420f35b5e24bf857bd215",
+    "filtered-fft.png": "db36292e670f448d72d56a7847cb05d3c789a4c22e516affba5e100f9692c176"
+  }
+}

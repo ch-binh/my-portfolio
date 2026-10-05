@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { blogs } from '../data/blogs';
 
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
@@ -18,8 +19,7 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
         Embedded firmware engineer documenting low-level debugging, RTOS behavior, peripheral drivers, and hardware/software integration.
       </p>
       <div class="links">
-        <a href={`${baseUrl}projects/`}>Projects</a>
-        <a href={`${baseUrl}blog/`}>Notes</a>
+        <a href={`${baseUrl}blog/`}>Blogs</a>
         <a href="https://github.com/ch-binh" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </div>
@@ -57,65 +57,17 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
     </div>
   </section>
 
-  <!-- Recent Projects -->
+  <!-- Latest Blogs -->
   <section class="doc-section">
-    <h2 class="section-title">Recent Projects</h2>
+    <h2 class="section-title">Latest Blogs</h2>
     <div class="project-list">
-      <a href={`${baseUrl}projects/graduation-thesis/`} class="project-item">
-        <div class="project-meta">
-          <span class="tag">LQR</span>
-          <span class="tag">MPU6050</span>
-          <span class="tag">Kalman</span>
-        </div>
-        <h3>Self-Balancing Electric Motorcycle</h3>
-        <p>Graduation thesis prototype using a reaction wheel, filtered MPU6050 angle sensing, LQR balancing control, and camera-based line tracking.</p>
-      </a>
-      <a href={`${baseUrl}projects/stm32-sdmmc-dma-debugging/`} class="project-item">
-        <div class="project-meta">
-          <span class="tag">STM32L4</span>
-          <span class="tag">FreeRTOS</span>
-          <span class="tag">DMA</span>
-        </div>
-        <h3>STM32 SDMMC + DMA Debugging</h3>
-        <p>Debugging SD card write failures: NVIC priority inversion, D-Cache coherence, DMA FIFO underrun.</p>
-      </a>
-      <a href={`${baseUrl}projects/pdm-microphone-pcm-audio/`} class="project-item">
-        <div class="project-meta">
-          <span class="tag">nRF52</span>
-          <span class="tag">PDM</span>
-          <span class="tag">EasyDMA</span>
-        </div>
-        <h3>PDM Microphone to PCM Audio</h3>
-        <p>Capture audio from PDM mic on nRF52, convert to 16-bit PCM with hardware decimation and double-buffering.</p>
-      </a>
-      <a href={`${baseUrl}projects/loadcell-weight-system/`} class="project-item">
-        <div class="project-meta">
-          <span class="tag">STM32</span>
-          <span class="tag">HX711</span>
-          <span class="tag">Kalman</span>
-        </div>
-        <h3>Loadcell Weight Measurement</h3>
-        <p>Weight measurement with HX711 ADC. Kalman filter + moving average to reduce vibration noise.</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- Latest Notes -->
-  <section class="doc-section">
-    <h2 class="section-title">Latest Notes</h2>
-    <div class="notes-list">
-      <a href={`${baseUrl}blog/self-balancing-electric-motorcycle-paper/`} class="note-item">
-        <h3>Study and Implementation of Self-Balancing Electric Motorcycle</h3>
-        <p>Research-paper note on the model, sensor filtering, PID/LQR comparison, and prototype validation.</p>
-      </a>
-      <a href={`${baseUrl}blog/calibrating-loadcells/`} class="note-item">
-        <h3>Calibrating Loadcells: Digital Noise Filtering in Embedded C</h3>
-        <p>Tare calibration, moving average, and 1D Kalman filter implementation on Cortex-M for stable weight readings.</p>
-      </a>
-      <a href={`${baseUrl}blog/pdm-vs-pcm/`} class="note-item">
-        <h3>PDM vs PCM in Embedded Audio</h3>
-        <p>Quick reference on what PDM and PCM are, and how they relate in embedded audio capture.</p>
-      </a>
+      {blogs.map(blog => (
+        <a href={baseUrl + blog.path} class="project-item">
+          <div class="project-meta">{blog.tags.map(tag => <span class="tag">{tag}</span>)}</div>
+          <h3>{blog.title}</h3>
+          <p>{blog.description}</p>
+        </a>
+      ))}
     </div>
   </section>
 </Layout>
@@ -411,43 +363,6 @@ const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
   }
 
   .project-item p {
-    font-size: 0.84rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-    margin: 0;
-  }
-
-  /* Notes List */
-  .notes-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .note-item {
-    display: block;
-    padding: 1.2rem 1.4rem;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    background: var(--card-bg);
-    color: var(--text-color);
-    transition: border-color 0.3s ease;
-  }
-
-  .note-item:hover {
-    border-color: var(--accent-color);
-    color: var(--text-color);
-    transform: none;
-  }
-
-  .note-item h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin: 0 0 0.35rem;
-    color: var(--text-color);
-  }
-
-  .note-item p {
     font-size: 0.84rem;
     line-height: 1.6;
     color: var(--text-muted);

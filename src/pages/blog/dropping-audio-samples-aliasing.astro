@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import results from '../../data/aliasing-results.json';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+
+// The site consumes notebook artifacts; it never performs DSP.
+for (const [filename, expected] of Object.entries(results.artifactSha256)) {
+  const bytes = readFileSync(new URL('../../../public/note-assets/aliasing/' + filename, import.meta.url));
+  if (createHash('sha256').update(bytes).digest('hex') !== expected) {
+    throw new Error('Aliasing artifact does not match the verified notebook: ' + filename);
+  }
+}
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase : rawBase + '/';
+const assets = baseUrl + 'note-assets/aliasing/';
+const repositoryUrl = results.repositoryUrl;
+---
+
+<Layout title="Aliasing Phenomenon in Audio Downsampling - Binh Pham">
+  <article class="aliasing-article">
+    <h1>Aliasing Phenomenon in Audio Downsampling</h1>
+    <div class="article-meta" aria-label="Article topics and reading time">
+      <span>Audio · DSP · Firmware</span>
+      <span>2 min read</span>
+    </div>
+
+    <div class="opening">
+      <p>Have you ever wanted to shrink an audio recording to save storage, and thought: “What if I just skip every other sample?”</p>
+      <p>It sounds reasonable. Keep half the samples, play them at half the original sample rate, and the recording still lasts just as long.</p>
+      <p>But the sound can change in a surprising way.</p>
+      <p>I had encountered this kind of problem while working on firmware. Studying DSP helped me understand why. This small experiment makes the difference easier to hear.</p>
+    </div>
+
+    <section class="listen-card original-card" aria-labelledby="original-heading">
+      <span class="card-label">The reference</span>
+      <h2 id="original-heading">Original · 64 kHz</h2>
+      <p>This four-second synthetic recording contains three equally strong tones: 3, 10 and 31 kHz. The last one is beyond ordinary human hearing and typical speaker capability, but it is present in the saved samples.</p>
+      <p class="listening-tip">Listen at a comfortable volume, then compare the two versions below.</p>
+      <audio data-aliasing-audio controls preload="metadata" aria-label="Original audio at 64 kHz">
+        <source src={assets + 'original-64khz.wav'} type="audio/wav" />
+        <a href={assets + 'original-64khz.wav'}>Download the original audio.</a>
+      </audio>
+    </section>
+
+    <figure class="waveform-figure">
+      <img src={assets + 'original-waveform.png'} alt="Three sinusoidal components at 3, 10 and 31 kHz overlaid with their summed waveform and actual saved PCM samples" width={results.imageDimensions['original-waveform.png'][0]} height={results.imageDimensions['original-waveform.png'][1]} loading="lazy" />
+      <figcaption>The coloured waves add together to form the dark waveform. The dots are the actual saved samples.</figcaption>
+    </figure>
+
+    <h2 class="comparison-heading">Same duration. Two different results.</h2>
+    <div class="comparison-grid">
+      <section class="listen-card result-card" aria-labelledby="skip-heading">
+        <span class="card-label">01 · Without filtering</span>
+        <h3 id="skip-heading">Skip samples</h3>
+        <p class="sample-rate">32 kHz · No filter</p>
+        <audio data-aliasing-audio controls preload="metadata" aria-label="Downsampled audio at 32 kHz without filtering">
+          <source src={assets + 'unfiltered-32khz.wav'} type="audio/wav" />
+          <a href={assets + 'unfiltered-32khz.wav'}>Download the unfiltered audio.</a>
+        </audio>
+        <p>We keep one sample and discard the next. The duration stays the same, but the original 31 kHz component now appears as a 1 kHz tone.</p>
+        <p>That false lower-frequency tone is <strong>aliasing</strong>. Playing at the correct new rate does not prevent it.</p>
+      </section>
+      <section class="listen-card result-card" aria-labelledby="filter-heading">
+        <span class="card-label">02 · With filtering</span>
+        <h3 id="filter-heading">Filter first</h3>
+        <p class="sample-rate">32 kHz · Low-pass first</p>
+        <audio data-aliasing-audio controls preload="metadata" aria-label="Downsampled audio at 32 kHz after low-pass filtering">
+          <source src={assets + 'filtered-32khz.wav'} type="audio/wav" />
+          <a href={assets + 'filtered-32khz.wav'}>Download the filtered audio.</a>
+        </audio>
+        <p>Before discarding samples, we weaken frequencies that do not fit the new sample rate.</p>
+        <p>The unwanted 1 kHz tone is strongly reduced, while the 3 and 10 kHz tones remain. In this example, the result sounds much closer to the original.</p>
+      </section>
+    </div>
+
+    <details class="frequency-details">
+      <summary>See the frequency analysis</summary>
+      <div class="frequency-content">
+        <p>The FFTs analyze the saved WAV files, not the speaker output. In this test, the filter reduced the 1 kHz alias by <strong>{results.aliasReductionDb.toFixed(2)} dB</strong>.</p>
+        <h3>Why does 31 kHz become 1 kHz?</h3>
+        <p>The new sample rate is 32 kHz, so its Nyquist limit is 16 kHz. Our 31 kHz tone is above that limit. For this cosine tone, the alias is:</p>
+        <p class="alias-calculation"><strong>32 kHz − 31 kHz = 1 kHz</strong></p>
+        <p>At the retained sampling instants, the 31 kHz cosine has the same values as a 1 kHz cosine. The lower-rate recording cannot tell them apart. This subtraction describes this example, not every possible alias.</p>
+        <h3>Original · 64 kHz</h3>
+        <figure>
+          <img src={assets + 'original-fft.png'} alt="Original 64 kHz recording: frequency peaks at 3, 10 and 31 kHz" width={results.imageDimensions['original-fft.png'][0]} height={results.imageDimensions['original-fft.png'][1]} loading="lazy" />
+          <figcaption>Original: the three intended tones.</figcaption>
+        </figure>
+        <h3>Skip samples · 32 kHz</h3>
+        <figure>
+          <img src={assets + 'unfiltered-waveform.png'} alt="Unfiltered output waveform: 1, 3 and 10 kHz components, their sum and actual saved PCM samples" width={results.imageDimensions['unfiltered-waveform.png'][0]} height={results.imageDimensions['unfiltered-waveform.png'][1]} loading="lazy" />
+          <figcaption>Time domain: the 1 kHz alias joins the retained 3 and 10 kHz components.</figcaption>
+        </figure>
+        <figure>
+          <img src={assets + 'unfiltered-fft.png'} alt="Unfiltered 32 kHz recording: a new 1 kHz alias appears alongside the retained 3 and 10 kHz tones" width={results.imageDimensions['unfiltered-fft.png'][0]} height={results.imageDimensions['unfiltered-fft.png'][1]} loading="lazy" />
+          <figcaption>Skip samples: 31 kHz appears as 1 kHz.</figcaption>
+        </figure>
+        <h3>Filter first · 32 kHz</h3>
+        <figure>
+          <img src={assets + 'filtered-waveform.png'} alt="Filtered output waveform: 3 and 10 kHz components remain, with a strongly reduced 1 kHz alias, their sum and saved PCM samples" width={results.imageDimensions['filtered-waveform.png'][0]} height={results.imageDimensions['filtered-waveform.png'][1]} loading="lazy" />
+          <figcaption>Time domain: the 3 and 10 kHz components remain; the unwanted 1 kHz component is much smaller.</figcaption>
+        </figure>
+        <figure>
+          <img src={assets + 'filtered-fft.png'} alt="Filtered 32 kHz recording: 3 and 10 kHz remain while the 1 kHz alias is strongly attenuated" width={results.imageDimensions['filtered-fft.png'][0]} height={results.imageDimensions['filtered-fft.png'][1]} loading="lazy" />
+          <figcaption>Filter first: the false lower tone is strongly reduced.</figcaption>
+        </figure>
+        <p class="measurement-note">The waveform curves illustrate components fitted to the saved PCM; the dots are actual samples. All three clips use the same amplitude scale and the waveform plots show the same 1 ms interval. Browser playback may resample audio; the input's 31 kHz tone cannot be reproduced faithfully on ordinary playback equipment.</p>
+      </div>
+    </details>
+
+    <div class="takeaway">
+      <p><strong>The lesson:</strong> decide the bandwidth before throwing samples away.</p>
+      <p>Filtering prevents higher frequencies from folding into false lower ones. It does not preserve everything: removing audible high frequencies can also reduce brightness and detail.</p>
+      <p>Keeping fewer samples reduces uncompressed PCM storage. It is not the same as using an audio codec.</p>
+    </div>
+
+    <div class="next-question">
+      <p><strong>What I want to explore next:</strong> can firmware estimate how much energy lies above the new frequency limit before reducing the sample rate?</p>
+    </div>
+    <p class="experiment-note">This is a desktop simulation, not a measurement of a microphone or an MCU.</p>
+
+    {repositoryUrl && (
+      <a class="repository-link" href={repositoryUrl} target="_blank" rel="noopener noreferrer">Explore the experiment on GitHub →</a>
+    )}
+    <a class="back-link" href={baseUrl + 'blog/'}>← All blogs</a>
+  </article>
+</Layout>
+
+<script>
+  function initializeAliasingAudio() {
+    const players = document.querySelectorAll<HTMLAudioElement>('[data-aliasing-audio]');
+    for (const player of players) {
+      if (player.dataset.initialized) continue;
+      player.dataset.initialized = 'true';
+      player.volume = 0.25;
+      player.addEventListener('play', () => {
+        for (const other of players) {
+          if (other !== player) other.pause();
+        }
+      });
+    }
+  }
+  document.addEventListener('astro:page-load', initializeAliasingAudio);
+  document.addEventListener('astro:before-swap', () => {
+    for (const player of document.querySelectorAll<HTMLAudioElement>('[data-aliasing-audio]')) {
+      player.pause();
+    }
+  });
+</script>
+
+<style>
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: -0.6rem 0 2rem;
+    color: var(--text-muted);
+    font: 400 0.75rem/1.7 'JetBrains Mono', monospace;
+  }
+  .opening { margin-bottom: 2rem; }
+  .aliasing-article .listen-card {
+    min-width: 0;
+    margin: 0;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: none;
+  }
+  .aliasing-article .listen-card:hover { transform: none; box-shadow: none; }
+  .aliasing-article .original-card { margin-bottom: 2rem; }
+  .card-label, .sample-rate {
+    display: block;
+    color: var(--text-muted);
+    font: 400 0.72rem/1.6 'JetBrains Mono', monospace;
+  }
+  .card-label { margin-bottom: 0.65rem; }
+  .listen-card h2, .listen-card h3 {
+    border: none;
+    padding: 0;
+    margin: 0 0 0.65rem;
+    font-size: 1.25rem;
+  }
+  .listen-card p { font-size: 0.94rem; line-height: 1.7; }
+  .listen-card p:last-child { margin-bottom: 0; }
+  .listen-card .sample-rate { font-size: 0.72rem; margin-bottom: 0.85rem; }
+  .listen-card .listening-tip { color: var(--text-muted); font-size: 0.86rem; }
+  audio { display: block; width: 100%; min-width: 0; margin: 0 0 1.25rem; }
+  .original-card audio { margin-bottom: 0; }
+  .comparison-heading { border: none; padding: 0; font-size: 1.2rem; margin: 0 0 1rem; }
+  .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  figure { margin: 0; }
+  .waveform-figure { margin: 0 0 2rem; }
+  img { display: block; width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 8px; }
+  figcaption { margin-top: 0.7rem; font-size: 0.83rem; line-height: 1.6; color: var(--text-muted); }
+  .frequency-details { margin: 2rem 0; border: 1px solid var(--border-color); border-radius: 12px; background: var(--card-bg); }
+  summary { padding: 1rem 1.25rem; cursor: pointer; font-size: 0.9rem; font-weight: 500; }
+  .frequency-content { padding: 0 1.25rem 1.25rem; font-size: 0.9rem; }
+  .frequency-content figure { margin: 1.25rem 0; }
+  .alias-calculation { padding: 1rem; background: var(--code-inline-bg); border-radius: 8px; font: 400 1rem/1.7 'JetBrains Mono', monospace; text-align: center; }
+  .measurement-note { margin-bottom: 0; color: var(--text-muted); font-size: 0.83rem; }
+  .takeaway { padding: 1.25rem 1.5rem; border-left: 3px solid var(--accent-color); background: var(--code-inline-bg); border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; }
+  .takeaway p:last-child { margin: 0; }
+  .next-question p { font-size: 0.94rem; }
+  .experiment-note { font-size: 0.83rem; color: var(--text-muted); }
+  .repository-link { display: block; margin-bottom: 1.5rem; }
+  .back-link { margin: 0; }
+  summary:focus-visible, audio:focus-visible, .aliasing-article a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 4px; }
+  @media (max-width: 679px) {
+    .comparison-grid { grid-template-columns: minmax(0, 1fr); }
+    .aliasing-article .listen-card { padding: 1.25rem; }
+    .takeaway { padding: 1.25rem; }
+  }
+</style>

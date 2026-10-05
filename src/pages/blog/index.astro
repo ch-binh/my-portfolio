@@ -1,48 +1,21 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { blogs } from '../../data/blogs';
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
-<Layout title="Notes - Binh Pham">
-  <h1>Notes</h1>
-  <p>Debugging notes, implementation logs, and things I learned while writing firmware.</p>
+<Layout title="Blogs - Binh Pham">
+  <h1>Blogs</h1>
+  <p>Projects, experiments, debugging notes, and things I learned while writing firmware.</p>
 
-  <section class="note-entry">
-    <a href={`${baseUrl}blog/self-balancing-electric-motorcycle-paper/`}>
-      <h2>Study and Implementation of Self-Balancing Electric Motorcycle</h2>
-    </a>
-    <p class="note-desc">A compact research note on the reaction-wheel model, Kalman-filtered MPU6050 angle estimate, PID/LQR comparison, and physical prototype validation.</p>
-    <div class="note-tags">
-      <span>Control</span>
-      <span>LQR</span>
-      <span>IMU</span>
-    </div>
-  </section>
-
-  <section class="note-entry">
-    <a href={`${baseUrl}blog/calibrating-loadcells/`}>
-      <h2>Calibrating Loadcells: Digital Noise Filtering in Embedded C</h2>
-    </a>
-    <p class="note-desc">Tare calibration, moving average, and 1D Kalman filter implementation on Cortex-M for stable weight readings.</p>
-    <div class="note-tags">
-      <span>Sensors</span>
-      <span>ADC</span>
-      <span>Filtering</span>
-    </div>
-  </section>
-
-  <section class="note-entry">
-    <a href={`${baseUrl}blog/pdm-vs-pcm/`}>
-      <h2>PDM vs PCM in Embedded Audio</h2>
-    </a>
-    <p class="note-desc">Quick reference on what PDM and PCM are, and how they relate in embedded audio capture.</p>
-    <div class="note-tags">
-      <span>Audio</span>
-      <span>PDM</span>
-      <span>PCM</span>
-    </div>
-  </section>
+  {blogs.map(blog => (
+    <section class="note-entry">
+      <a href={baseUrl + blog.path}><h2>{blog.title}</h2></a>
+      <p class="note-desc">{blog.description}</p>
+      <div class="note-tags">{blog.tags.map(tag => <span>{tag}</span>)}</div>
+    </section>
+  ))}
 </Layout>
 
 <style>

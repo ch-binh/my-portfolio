@@ -28,6 +28,9 @@ jobs:
         with:
           node-version: 22.12.0
 
+      - name: Verify article media and Blogs routes
+        run: node --test scripts/verify-aliasing.test.mjs scripts/verify-blogs.test.mjs
+
   deploy:
     needs: build
     runs-on: ubuntu-latest

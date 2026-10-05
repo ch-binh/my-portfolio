@@ -59,6 +59,31 @@ This website is designed for maximum speed, readability, and modern aesthetics:
 
 ## ⚙️ Running Locally
 
+### Aliasing article: verified results, then preview
+
+The article “Aliasing Phenomenon in Audio Downsampling” uses static results from a separate
+DSP experiment repository. The website never runs the experiment's algorithms.
+
+1. Execute and verify `01_pcm_aliasing_walkthrough.ipynb` in the DSP repository.
+2. Import its results with `node scripts/import-aliasing-artifacts.mjs <experiment-directory>`.
+   The experiment directory must contain `code/`, `input/` and `output/results.json`.
+   The importer checks notebook code/artifact hashes and WAV metadata before copying.
+3. Build with `npm run build`, then run `node --test scripts/verify-aliasing.test.mjs`.
+4. Preview `/my-portfolio/blog/dropping-audio-samples-aliasing/` locally.
+
+The Blogs archive combines projects and notes at `/blog/`. The old `/projects/`
+index redirects there; individual article URLs remain stable. Home and the archive
+use the same catalog in `src/data/blogs.ts`. Run
+`node --test scripts/verify-aliasing.test.mjs scripts/verify-blogs.test.mjs`
+after building to check media, navigation, archive entries and legacy routes.
+
+Only three WAVs, six plots and public-safe measurements enter this repository.
+Notebook code and private source paths do not. The build rejects changed media.
+The separate experiment repository is public:
+[SIM-Aliasing-in-audio-down-sampling](https://github.com/ch-binh/SIM-Aliasing-in-audio-down-sampling).
+Its URL is stored in `src/data/aliasing-results.json` and shown in the article.
+The importer preserves this URL when results are refreshed.
+
 If you want to clone this repository and run the website locally:
 
 ### 1. Prerequisites
